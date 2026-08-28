@@ -15,7 +15,6 @@
 - [仮説一覧](hypotheses/index.md)
 - [生きている結果・研究候補](hypotheses/live/index.md)
 - [棄却・反証された仮説](hypotheses/rejected/index.md)
-- [外部候補：Unique Peak Theorem](補足資料/x-minato-2080305426172948725.md)
 
 ## ターン別出典
 
@@ -55,7 +54,3 @@
 - [Turn 032 — assistant](会話ログ/032-assistant.md) — 進めました。今回はかなり収穫があります。affine-target descent は本質的には tautology だったので棄却しましたが、その過程から Type I / Type II の成功可能領域を意味論的にかなり狭められました。
 - [Turn 033 — user](会話ログ/033-user.md) — うん、じゃあ次それ検証頑張ってやろう！
 - [Turn 034 — assistant](会話ログ/034-assistant.md) — 次は狙いを明確にします。**「Type-I の上側 k/p>θ は、有限個の H=d(b−a) 2 に落ちるか」**をまず一般式で判定します。これが真なら upper corridor 全体を有限個の quadratic forms に還元できますし、偽ならその期待を早めに捨てます。
-
-## 外部参照
-
-- [X投稿：Unique Peak Theorem候補](補足資料/x-minato-2080305426172948725.md) — Type II rosterにおける `−1` の一意最大性を主張する未検証候補。

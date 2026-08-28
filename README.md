@@ -23,8 +23,6 @@ Erdos–Straus/
 │   ├── index.md
 │   ├── live/
 │   └── rejected/
-├── 補足資料/
-│   └── ...
 ├── 会話ログ/
 │   └── one Markdown file per turn (source archive)
 └── 旧棄却資料/
@@ -35,6 +33,5 @@ Erdos–Straus/
 
 1. `00_toc.md` で論点の地図を確認する。
 2. `topics/` で定義・既知結果・証明の流れを読む。
-3. `hypotheses/` で数学的仮説の状態（live / rejected / external）を確認する。
+3. `hypotheses/` で数学的仮説の状態（live / rejected）を確認する。
 4. `会話ログ/` は出典確認が必要なときだけ参照する。
-5. `補足資料/` は会話外から取り込んだ未検証の候補・参考情報。

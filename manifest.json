@@ -11,13 +11,6 @@
     "hypotheses"
   ],
   "archived_material": "会話ログ",
-  "補足資料": [
-    {
-      "path": "補足資料/x-minato-2080305426172948725.md",
-      "url": "https://x.com/Minato_ShinkaiL/status/2080305426172948725",
-      "status": "unverified candidate"
-    }
-  ],
   "decoration_removed": [
     "thought-duration UI",
     "tool-call UI",
