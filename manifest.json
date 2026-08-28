@@ -1,0 +1,26 @@
+{
+  "source_url": "https://chatgpt.com/c/6a8993cb-a988-83e8-b6b4-020ccbc56969",
+  "captured_at": "2026-08-28",
+  "turn_count": 34,
+  "user_turns": 17,
+  "assistant_turns": 17,
+  "会話ログ_format": "Markdown",
+  "primary_organization": "topics-and-hypotheses",
+  "topic_directories": [
+    "topics",
+    "hypotheses"
+  ],
+  "archived_material": "会話ログ",
+  "補足資料": [
+    {
+      "path": "補足資料/x-minato-2080305426172948725.md",
+      "url": "https://x.com/Minato_ShinkaiL/status/2080305426172948725",
+      "status": "unverified candidate"
+    }
+  ],
+  "decoration_removed": [
+    "thought-duration UI",
+    "tool-call UI",
+    "message action UI"
+  ]
+}
