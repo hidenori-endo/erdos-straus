@@ -7,3 +7,4 @@
 - [Type II exact](typeII-exact.md)
 - [Global branch-covering problem](global-branch-covering.md)
 
+- [min-e の記録は極値の産物](min-e-extreme-value.md) — max min-e=111 (p=21841) が動かない理由、および e ≡ 7 (mod 8) が易しいという構造的発見
