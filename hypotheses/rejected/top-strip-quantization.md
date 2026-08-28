@@ -1,7 +1,7 @@
 # Top-strip quantization (p-k = O(sqrt p))
 
 - status: rejected as a proof route (identities are correct; coverage is density zero)
-- source: [Turn 034](../../会話ログ/034-assistant.md) + 本セッションの数値検証
+- 由来: 元会話 Turn 034 + 本セッションの数値検証
 
 ## 検証できたこと
 

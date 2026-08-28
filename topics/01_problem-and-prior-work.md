@@ -20,5 +20,5 @@ Erdős–Straus予想は、すべての整数 n >= 2 について
 
 有限範囲の計算成功や、特定族の被覆は、全素数に対する普遍定理ではない。Type I / Type IIを同時に扱う必要がある。
 
-関連出典: [Turn 001-008](../会話ログ/001-user.md), [Turn 004](../会話ログ/004-assistant.md), [Turn 006](../会話ログ/006-assistant.md), [Turn 008](../会話ログ/008-assistant.md)
+由来: 元会話の Turn 001-008, Turn 004, Turn 006, Turn 008（ログは非同梱）
 

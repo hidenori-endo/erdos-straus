@@ -1,7 +1,7 @@
 # Type I H bound
 
 - status: usable / treated as an unconditional result in the conversation
-- source turns: [030](../../会話ログ/030-assistant.md), [032](../../会話ログ/032-assistant.md), [034](../../会話ログ/034-assistant.md)
+- 由来: 元会話 Turn 030, 032, 034
 
 For Type I normalized parameters, define H = d(b-a)^2. The hard-prime congruence and residue conditions imply
 

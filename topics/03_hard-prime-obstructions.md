@@ -50,5 +50,5 @@ k <= p - 2*sqrt(22*(p+1)/23) + 2
 
 というboundが得られる。H=22の例がsharp caseとして記録されている。
 
-関連出典: [Turn 030](../会話ログ/030-assistant.md), [Turn 032](../会話ログ/032-assistant.md), [Turn 034](../会話ログ/034-assistant.md)
+由来: 元会話の Turn 030, Turn 032, Turn 034（ログは非同梱）
 

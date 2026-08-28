@@ -22,5 +22,5 @@ Type IIは上端から除外されるため、主戦場は
 
 のType-I-only corridorである。ここでHの離散構造と、外部のUnique Peak候補を接続できるかが次の課題である。
 
-関連出典: [Turn 012](../会話ログ/012-assistant.md), [Turn 018](../会話ログ/018-assistant.md), [Turn 020](../会話ログ/020-assistant.md), [Turn 021](../会話ログ/021-user.md), [Turn 026](../会話ログ/026-assistant.md), [Turn 028](../会話ログ/028-assistant.md), [Turn 032](../会話ログ/032-assistant.md), [Turn 034](../会話ログ/034-assistant.md)
+由来: 元会話の Turn 012, Turn 018, Turn 020, Turn 021, Turn 026, Turn 028, Turn 032, Turn 034（ログは非同梱）
 
