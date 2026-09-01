@@ -4,7 +4,8 @@
   "primary_organization": "topics-and-hypotheses",
   "topic_directories": [
     "topics",
-    "hypotheses"
+    "hypotheses",
+    "code"
   ],
   "additional_sources": [
     {
@@ -17,6 +18,18 @@
         "q=11 to q=19 character saturation",
         "k=15 and k=35 character annihilation",
         "q=23 fixed-route rejection"
+      ]
+    },
+    {
+      "source_url": null,
+      "captured_at": "2026-09-01",
+      "status": "in-repo verification",
+      "digest": "updates/2026-09-01-closure-correction.md",
+      "topics": [
+        "closure transition correction",
+        "QR-support sufficiency theorem",
+        "k=35 pure-support rejection",
+        "21-pair equivalence atlas"
       ]
     }
   ],

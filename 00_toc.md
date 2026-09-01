@@ -15,6 +15,11 @@
 ## 追加更新
 
 - [2026-09-01 追加検証ダイジェスト](updates/2026-09-01-addendum.md)
+- [2026-09-01 closure の訂正と character atlas の再構成](updates/2026-09-01-closure-correction.md)
+
+## 再現コード
+
+- [code/](code/README.md): character atlas の監査・閉包プログラム
 
 ## 数学的仮説
 

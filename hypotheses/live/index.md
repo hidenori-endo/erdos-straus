@@ -9,3 +9,5 @@
 - [Global branch-covering problem](global-branch-covering.md)
 - [Adaptive shift and character saturation](adaptive-shift-and-character-saturation.md)
 - [Character annihilation criterion](character-annihilation-criterion.md)
+- [QR-support 十分性](qr-support-sufficiency.md)
+- [k=11 の seed 15 補題](k11-seed15-lemma.md)
