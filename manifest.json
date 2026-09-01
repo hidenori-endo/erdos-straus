@@ -1,9 +1,40 @@
 {
+  "source_url": "https://chatgpt.com/c/6a8993cb-a988-83e8-b6b4-020ccbc56969",
   "captured_at": "2026-08-28",
+  "turn_count": 34,
+  "user_turns": 17,
+  "assistant_turns": 17,
+  "会話ログ_format": "Markdown",
   "primary_organization": "topics-and-hypotheses",
   "topic_directories": [
     "topics",
     "hypotheses"
   ],
-  "note": "このリポジトリは Erdős–Straus 予想に関する検討結果の整理である。元になった会話ログは含まない。"
+  "archived_material": "会話ログ",
+  "補足資料": [
+    {
+      "path": "補足資料/x-minato-2080305426172948725.md",
+      "url": "https://x.com/Minato_ShinkaiL/status/2080305426172948725",
+      "status": "unverified candidate"
+    }
+  ],
+  "additional_sources": [
+    {
+      "source_url": "https://chatgpt.com/c/6a914e1d-c37c-83ee-b5fb-e5560a6203a8",
+      "captured_at": "2026-09-01",
+      "status": "topic digest imported",
+      "digest": "updates/2026-09-01-addendum.md",
+      "topics": [
+        "consecutive integers and cross-shift",
+        "q=11 to q=19 character saturation",
+        "k=15 and k=35 character annihilation",
+        "q=23 fixed-route rejection"
+      ]
+    }
+  ],
+  "decoration_removed": [
+    "thought-duration UI",
+    "tool-call UI",
+    "message action UI"
+  ]
 }

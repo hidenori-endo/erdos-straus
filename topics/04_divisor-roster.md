@@ -1,8 +1,8 @@
 # 04. Divisor roster とUnique Peak候補
 
-## Unique Peak 候補
+## 外部から加わった候補
 
-会話外から持ち込まれた候補として、q = 4Q - 1 に対する約数ペアの剰余値の重複度
+[X投稿のUnique Peak Theorem候補](../補足資料/x-minato-2080305426172948725.md) は、q = 4Q - 1 に対して約数ペアの剰余値の重複度
 
 ~~~
 mu_q(t) = # { (s1,s2) :
