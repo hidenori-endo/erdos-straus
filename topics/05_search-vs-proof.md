@@ -32,5 +32,3 @@ Type IIは上端から除外されるため、主戦場は
 のType-I-only corridorである。追加検証後は、これに consecutive shift の座標
 `C_{4j+3}=N+j` と adaptive な character-saturation route を接続し、固定 roster では
 ない forcing lemma を作れるかが次の課題である。
-
-関連出典: [Turn 012](../会話ログ/012-assistant.md), [Turn 018](../会話ログ/018-assistant.md), [Turn 020](../会話ログ/020-assistant.md), [Turn 021](../会話ログ/021-user.md), [Turn 026](../会話ログ/026-assistant.md), [Turn 028](../会話ログ/028-assistant.md), [Turn 032](../会話ログ/032-assistant.md), [Turn 034](../会話ログ/034-assistant.md)

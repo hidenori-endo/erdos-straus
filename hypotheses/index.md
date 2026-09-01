@@ -4,7 +4,7 @@
 
 - [Type II bound](live/typeII-bound.md): p >= 11k - 36。会話内では無条件結果として扱う。
 - [Type I H bound](live/typeI-H-bound.md): H = d(b-a)^2 >= 22 と上側k bound。
-- [Unique Peak candidate](live/unique-peak-candidate.md): 外部X投稿由来。未検証。
+- [Unique Peak candidate](live/unique-peak-candidate.md): 本リポジトリ内で保留している未検証候補。
 - [Global branch-covering problem](live/global-branch-covering.md): 全admissible shiftでType I/II targetを逃れられないことを示す本命課題。
 - [Adaptive shift and character saturation](live/adaptive-shift-and-character-saturation.md): thin stateから強制因子・QR saturation・target captureへ進む適応的 route。
 - [Character annihilation criterion](live/character-annihilation-criterion.md): mandatory seed と exact center が `-1` miss を消す条件の分類問題。

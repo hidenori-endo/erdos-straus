@@ -4,7 +4,7 @@
 - captured: 2026-08-28
 - additional source: https://chatgpt.com/c/6a914e1d-c37c-83ee-b5fb-e5560a6203a8
 - additional captured: 2026-09-01（会話は追加検証依頼で終了）
-- format: topic-first Markdown; turn files are retained as source material
+- format: topic-first Markdown
 - note: ChatGPTの思考時間、ツール呼び出し表示、回答操作ボタンなどのUI装飾は除去済み
 
 ## Directory tree
@@ -26,20 +26,13 @@ Erdos–Straus/
 │   ├── index.md
 │   ├── live/
 │   └── rejected/
-├── 補足資料/
-│   └── ...
 ├── updates/
-│   └── 2026-09-01-addendum.md
-├── 会話ログ/
-│   └── one Markdown file per turn (source archive)
-└── 旧棄却資料/
-    └── legacy excerpts; canonical index is hypotheses/rejected/
+    └── 2026-09-01-addendum.md
 ```
 
 ## Reading order
 
 1. `00_toc.md` で論点の地図を確認する。
 2. `topics/` で定義・既知結果・証明の流れを読む。
-3. `hypotheses/` で数学的仮説の状態（live / rejected / external）を確認する。
-4. `会話ログ/` は出典確認が必要なときだけ参照する。
-5. `補足資料/` は会話外から取り込んだ未検証の候補・参考情報。
+3. `hypotheses/` で数学的仮説の状態（live / rejected）を確認する。
+4. `updates/` で追加検証の差分を確認する。

@@ -1,11 +1,11 @@
 # Top-strip quantization (p-k = O(sqrt p))
 
 - status: rejected as a proof route (identities are correct; coverage is density zero)
-- 由来: 元会話 Turn 034 + 本セッションの数値検証
+- 由来: 既存の研究整理と本セッションの数値検証
 
 ## 検証できたこと
 
-Turn 034 の式はすべて正しい。found リスト 10 件で以下を確認した:
+以前の式はすべて正しい。found リスト 10 件で以下を確認した:
 
 - `4dab = 3p+1`, `3k = 4da^2+1`, `H = d(b-a)^2`, `p = 3dh^2 - u`, `u = ceil(s^2/k)`
 - `H = (s+u)^2 / (uk - s^2)`

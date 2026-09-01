@@ -1,7 +1,7 @@
 # Unique Peak Theorem candidate
 
 - status: external / unverified
-- source: [X post](../../補足資料/x-minato-2080305426172948725.md)
+- source: 外部原文は含めず、候補の要旨だけを保留
 
 Candidate statement: for q = 4Q - 1 and the divisor-pair roster mu_q(t), one has mu_q(t) <= tau(Q), with equality only at t = -1 (mod q).
 

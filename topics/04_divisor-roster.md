@@ -1,8 +1,8 @@
 # 04. Divisor roster とUnique Peak候補
 
-## 外部から加わった候補
+## 未検証の Unique Peak 候補
 
-[X投稿のUnique Peak Theorem候補](../補足資料/x-minato-2080305426172948725.md) は、q = 4Q - 1 に対して約数ペアの剰余値の重複度
+[Unique Peak candidate](../hypotheses/live/unique-peak-candidate.md) は、q = 4Q - 1 に対して約数ペアの剰余値の重複度
 
 ~~~
 mu_q(t) = # { (s1,s2) :
@@ -27,4 +27,3 @@ mu_q(t) <= tau(Q)
 これは既存のType II変数と記号が同じとは限らない。さらに、s1,s2がQの約数でもs1*s2がQの約数とは限らないため、積の衝突をq moduloで扱う必要がある。q < 4000の計算確認は、一般証明ではない。
 
 状態: external / unverified candidate
-
