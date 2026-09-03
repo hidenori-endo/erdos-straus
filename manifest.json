@@ -31,6 +31,20 @@
         "k=35 pure-support rejection",
         "21-pair equivalence atlas"
       ]
+    },
+    {
+      "source_url": "https://chatgpt.com/c/6a96a528-ddf8-83ee-90a2-d7a20677849a",
+      "captured_at": "2026-09-03",
+      "status": "topic digest imported",
+      "digest": "updates/2026-09-03-addendum.md",
+      "topics": [
+        "external-NR cycle no-go",
+        "aligned-shield finite-rank no-go",
+        "large defect and E_q=1 normal form",
+        "class-specific detector log-squared conjecture",
+        "prime-or-complement factor lemma",
+        "fab sieve dimension"
+      ]
     }
   ],
   "decoration_removed": [

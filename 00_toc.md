@@ -11,11 +11,13 @@
 - [05. 探索とセマンティックな証明](topics/05_search-vs-proof.md)
 - [06. Consecutive integers とcross-shift](topics/06_cross-shift-and-consecutive-integers.md)
 - [07. Character annihilation atlas](topics/07-character-annihilation-atlas.md)
+- [08. External-NR、full box、fab sieve](topics/08-external-nr-and-fab-sieve.md)
 
 ## 追加更新
 
 - [2026-09-01 追加検証ダイジェスト](updates/2026-09-01-addendum.md)
 - [2026-09-01 closure の訂正と character atlas の再構成](updates/2026-09-01-closure-correction.md)
+- [2026-09-03 external-NR と fab sieve の追加検証](updates/2026-09-03-addendum.md)
 
 ## 再現コード
 

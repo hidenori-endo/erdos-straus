@@ -21,14 +21,16 @@ Erdos–Straus/
 │   ├── 04_divisor-roster.md
 │   ├── 05_search-vs-proof.md
 │   ├── 06_cross-shift-and-consecutive-integers.md
-│   └── 07-character-annihilation-atlas.md
+│   ├── 07-character-annihilation-atlas.md
+│   └── 08-external-nr-and-fab-sieve.md
 ├── hypotheses/
 │   ├── index.md
 │   ├── live/          （qr-support-sufficiency.md, k11-seed15-lemma.md, ...）
 │   └── rejected/      （k35-pure-support-theorem.md, ...）
 ├── updates/
 │   ├── 2026-09-01-addendum.md
-│   └── 2026-09-01-closure-correction.md
+│   ├── 2026-09-01-closure-correction.md
+│   └── 2026-09-03-addendum.md
 └── code/
     ├── README.md
     ├── closure.cpp
@@ -43,4 +45,5 @@ Erdos–Straus/
 3. `hypotheses/` で数学的仮説の状態（live / rejected）を確認する。
 4. `updates/` で追加検証の差分を確認する。`2026-09-01-addendum.md` の §3
    `k=35` / `k=39` は `2026-09-01-closure-correction.md` で訂正済み。
+   `2026-09-03-addendum.md` はその訂正版を前提にした追加検証である。
 5. `code/` の 3 本（有限閉包 / 実素数監査 / 反例構成）で atlas を再現できる。
