@@ -5,10 +5,15 @@
 
 ## 背景
 
-訂正後の atlas で「miss ⇔ `C_k` の全素因子が p-QR」が成立するのは 21 組だけで、
+正しい箱の atlas で「miss ⇔ `C_k` の全素因子が p-QR」が成立するのは 30 組で、
 `k=11` はそのうち 3 class（`h = 169, 289, 529`）でのみ成立する。
-`k=3,7,15` が全 class で成立するのに対し、`k=11` だけが class で割れる。
+`k=3,7,15` が全 class で成立するのに対し、`k=11` は class で割れる。
 その原因を特定する。
+
+箱について: 以下の証明は `C_11` の約数の剰余集合 `S`（部分箱）で hit を示している。
+部分箱の hit は真の箱 `Div(C_11²)` でも hit なので、補題は正しい箱でも成立する。
+反対側の反例（`C_11 = 3·r`）は真の箱 `S·S` でも miss であることを `p<10^8` で確認済み
+（[2026-09-03 箱の訂正](../../updates/2026-09-03-box-correction.md)）。
 
 ## 分岐の正体
 
@@ -86,8 +91,9 @@ seed が `3` だけだと 1 の段階で `S ⊇ {1,3}` しかなく、`t₁ = 8 
 class 分割は「seed が `ker χ` を飽和するか」ではなく、**seed の約数集合
 `{1,3,5,4}` が `QR` の中でどれだけ広いか**で決まる。`{1,3}` では 3 個の NR が
 `t₁` を外せるのに対し、`{1,3,4,5}` では `r = 7` の 1 本に絞られ、それも
-`t₂` で潰れる。[k=35 の棄却例](../rejected/k35-pure-support-theorem.md)で
-「seed が `ker χ` を飽和する」が必要条件になり得なかった理由もここにある。
+`t₂` で潰れる。正しい箱では「seed が `ker χ` を生成する」は必要条件に戻った
+（[k=35 定理](k35-pure-support-theorem.md)、[atlas](../../topics/07-character-annihilation-atlas.md)）が、
+十分でない理由はこの数え上げにある。
 
 関連: [Character annihilation criterion](character-annihilation-criterion.md)、
 [07. atlas](../../topics/07-character-annihilation-atlas.md)

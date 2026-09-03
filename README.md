@@ -30,12 +30,14 @@ Erdos–Straus/
 ├── updates/
 │   ├── 2026-09-01-addendum.md
 │   ├── 2026-09-01-closure-correction.md
-│   └── 2026-09-03-addendum.md
+│   ├── 2026-09-03-addendum.md
+│   └── 2026-09-03-box-correction.md
 └── code/
     ├── README.md
     ├── closure.cpp
     ├── audit.cpp
-    └── witness.py
+    ├── witness.py
+    └── box_check.py
 ```
 
 ## Reading order
@@ -43,7 +45,9 @@ Erdos–Straus/
 1. `00_toc.md` で論点の地図を確認する。
 2. `topics/` で定義・既知結果・証明の流れを読む。
 3. `hypotheses/` で数学的仮説の状態（live / rejected）を確認する。
-4. `updates/` で追加検証の差分を確認する。`2026-09-01-addendum.md` の §3
-   `k=35` / `k=39` は `2026-09-01-closure-correction.md` で訂正済み。
-   `2026-09-03-addendum.md` はその訂正版を前提にした追加検証である。
-5. `code/` の 3 本（有限閉包 / 実素数監査 / 反例構成）で atlas を再現できる。
+4. `updates/` で追加検証の差分を確認する。`2026-09-01-closure-correction.md` は
+   `2026-09-01-addendum.md` §3 の `k=35` を「反証」したが、その訂正自体が箱の誤りで、
+   `2026-09-03-box-correction.md` で撤回された（`k=35` 定理は正しい）。atlas の
+   現行版は `topics/07` と `2026-09-03-box-correction.md`。
+5. `code/` の 4 本（有限閉包 / 実素数監査 / 反例構成 / 箱の総当たり検証）で atlas を
+   再現できる。

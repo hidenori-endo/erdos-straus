@@ -24,3 +24,22 @@ p + k = 4ABT
 
 Erdős–Strausの反例候補は、すべてのbranchが失敗することではなく、すべての admissible shift k でType I targetとType II targetの両方を逃れることに相当する。したがって、一方のtargetの失敗だけでは反例にならない。
 
+## Shift 座標での exact 判定（2026-09-03、証明済み）
+
+解 `4/p = 1/x+1/y+1/z` には `p` で割れない分母 `x` が必ずあり、`k := 4x - p` は
+`k ≡ 3 (mod 4)`、`x = C_k = (p+k)/4`。残り 2 項を解くと
+
+~~~
+Type II: ∃ D | C_k²,  D ≡ -C_k  (mod k)
+Type I : ∃ D | C_k²,  D ≡ -1/4  (mod k)
+~~~
+
+で、逆に `D` から解が復元できる。従って
+
+~~~
+ES(p)  ⇔  ∃ k ≡ 3 (mod 4):  Div(C_k²) mod k ∋ -1/4 または -C_k.
+~~~
+
+箱は **`C_k²` の約数**であって `C_k` の約数ではない（後者は部分箱で、hit を取りこぼす）。
+`code/box_check.py` で総当たり解と突き合わせて確認。導出は
+[2026-09-03 箱の訂正](../updates/2026-09-03-box-correction.md) §2。

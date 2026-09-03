@@ -18,6 +18,7 @@
 - [2026-09-01 追加検証ダイジェスト](updates/2026-09-01-addendum.md)
 - [2026-09-01 closure の訂正と character atlas の再構成](updates/2026-09-01-closure-correction.md)
 - [2026-09-03 external-NR と fab sieve の追加検証](updates/2026-09-03-addendum.md)
+- [2026-09-03 箱の訂正: exact box は Div(C_k²)、k=35 定理の復活と 30 組 atlas](updates/2026-09-03-box-correction.md)
 
 ## 再現コード
 

@@ -7,8 +7,9 @@
 - [Unique Peak candidate](live/unique-peak-candidate.md): 本リポジトリ内で保留している未検証候補。
 - [Global branch-covering problem](live/global-branch-covering.md): 全admissible shiftでType I/II targetを逃れられないことを示す本命課題。
 - [Adaptive shift and character saturation](live/adaptive-shift-and-character-saturation.md): thin stateから強制因子・QR saturation・target captureへ進む適応的 route。
-- [Character annihilation criterion](live/character-annihilation-criterion.md): mandatory seed と exact center が `-1` miss を消す条件の分類問題。
+- [Character annihilation criterion](live/character-annihilation-criterion.md): mandatory seed と exact center が `-1` miss を消す条件の分類問題。正しい箱で 30 組、`⟨seed⟩ ⊇ ker χ` が必要条件。
 - [QR-support 十分性](live/qr-support-sufficiency.md): `C_k` の全素因子が p-QR なら shift k は miss する（証明済み）。
+- [k=35 pure-support 定理](live/k35-pure-support-theorem.md): `h=121,361` で miss ⇔ pure（range-free 閉包 + `p<10^8`）。09-01 の棄却は箱の誤りで撤回。
 - [k=11 の seed 15 補題](live/k11-seed15-lemma.md): `k=11` の class 分割を mandatory seed から説明する（証明済み）。
 - [Prime-or-complement factor lemma](live/prime-or-complement-factor-lemma.md): fab miss が避ける二つの prime residue を与える初等補題。
 - [External shift log-squared conjecture](live/external-shift-log-squared-conjecture.md): detector 後の full-box hit に `q≲(log p)^2` を予想。
@@ -22,7 +23,6 @@
 - [Factor-rich injection](rejected/factor-rich-injection.md)
 - [Fixed-fraction H reduction](rejected/fixed-fraction-H-reduction.md)
 - [q=23 to q=27/31 fixed route](rejected/q23-to-27-31-fixed-route.md)
-- [k=35 pure-support 定理候補](rejected/k35-pure-support-theorem.md)
 - [External-NR cycle monotone descent](rejected/external-nr-cycle-monotone-descent.md)
 - [Bounded aligned-shield rank](rejected/bounded-aligned-shield-rank.md)
 - [Large defect contradiction](rejected/large-defect-contradiction.md)

@@ -45,6 +45,19 @@
         "prime-or-complement factor lemma",
         "fab sieve dimension"
       ]
+    },
+    {
+      "source_url": null,
+      "captured_at": "2026-09-03",
+      "status": "in-repo verification",
+      "digest": "updates/2026-09-03-box-correction.md",
+      "topics": [
+        "exact box is Div(C_k^2), not Div(C_k)",
+        "retraction of the 2026-09-01 closure correction",
+        "k=35 pure-support theorem restored",
+        "30-pair equivalence atlas",
+        "seed generates ker chi is necessary"
+      ]
     }
   ],
   "decoration_removed": [

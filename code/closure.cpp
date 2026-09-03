@@ -2,14 +2,15 @@
 //
 // Model:
 //   p is a hard prime, h = p mod 840 in {1,121,169,289,361,529}, C_k = (p+k)/4.
-//   A state is (S, c, neg): S = set of residues mod k of the divisors of C_k
-//   built so far, c = C_k mod k, neg = "some prime factor used is a p-NR".
-//   Consuming one more copy of a prime factor r sends
-//       S -> S u rS,     c -> c*r,     neg -> neg or [chi(r) = -1].
+//   The exact hit criterion for shift k (see code/audit.cpp, code/box_check.py)
+//   is: some divisor D of C_k^2 satisfies D = -1/4 (Type I) or D = -C_k
+//   (Type II) mod k.  A state is (S, c, neg): S = set of residues mod k of the
+//   divisors of C_k^2 built so far, c = C_k mod k, neg = "some prime factor
+//   used is a p-NR".  Consuming one more copy of a prime factor r raises its
+//   exponent in C_k^2 by two, so
+//       S -> S u rS u r^2 S,     c -> c*r,     neg -> neg or [chi(r) = -1].
 //   Repeated application builds every exponent, so every real divisor set of
 //   every admissible C_k is reachable: the closure over-approximates reality.
-//   Type I target  : D = -1/4 (mod k)
-//   Type II target : D = -C_k (mod k)
 //   A "miss" is a state whose S avoids both targets while c lies in the exact
 //   centre fibre {(h + 840t)/4 mod k}.  Annihilation = no miss has neg = 1.
 //
@@ -18,15 +19,18 @@
 //   = jacobi(r,k) -- the character depends only on r mod k.  For r = 2 the
 //   same identity holds as Kronecker symbols since 2 | C_k forces p = -k (mod 8).
 //
-// NOTE.  The transition MUST be S -> S u rS.  An earlier version used
-// S -> S u rS u r^2 S, which injects divisors r^2 that need not exist when r
-// has exponent 1.  That over-full state hits a target where the real divisor
-// set misses, producing FALSE annihilation -- it is what made k=35 look like
-// it annihilated in classes 121 and 361.  See code/README.md.
+// HISTORY.  The 2026-09-01 revision replaced S -> S u rS u r^2 S by
+// S -> S u rS, believing r^2 to be a phantom divisor.  That was wrong: the
+// exact box is Div(C_k^2), not Div(C_k), and the one-step transition models
+// a proper SUB-box.  The sub-box under-counts hits, so it manufactured false
+// non-pure misses (e.g. p=21121, k=35) and made k=35 look non-annihilating.
+// The 2026-09-03 box correction restored the r^2 transition; the old sub-box
+// model is kept behind SUBBOX=1 only for comparison.
 //
 // Env flags: NOPRUNE=1 disable the (sound) Type-I prune and report the full
 //            reachable-state count;  FAST=1 stop at the first non-pure miss;
-//            ALLK=1  include prime k as well as composite k.
+//            ALLK=1  include prime k as well as composite k;
+//            KMIN=k0 start from shift k0;  SUBBOX=1 use the old Div(C_k) model.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -54,9 +58,14 @@ struct Res{long long states=0,missTotal=0,missPure=0,missNonPure=0,pureHit=0;boo
 static Res closure(int k,int h,const vector<int>&U,const vector<int>&seedPrimes,long long CAP){
     int W=(k+63)/64;
     auto get=[&](const vector<uint64_t>&m,int i){return (m[i>>6]>>(i&63))&1ULL;};
+    static const bool SUBBOX = getenv("SUBBOX")!=nullptr;   // old Div(C_k) model, comparison only
     auto tr=[&](const vector<uint64_t>&m,int r,vector<uint64_t>&out){
         out=m;
-        for(int a:U) if(get(m,a)){int x=(int)(1LL*a*r%k);out[x>>6]|=1ULL<<(x&63);}
+        int r2=(int)(1LL*r*r%k);
+        for(int a:U) if(get(m,a)){
+            int x=(int)(1LL*a*r%k);out[x>>6]|=1ULL<<(x&63);
+            if(!SUBBOX){int y=(int)(1LL*a*r2%k);out[y>>6]|=1ULL<<(y&63);}
+        }
     };
     int tI=(k-invm(4,k))%k;
     vector<char>allow(k,0);for(int c:centers(k,h))allow[c]=1;
@@ -113,7 +122,8 @@ int main(int argc,char**argv){
     int M=argc>1?atoi(argv[1]):300;long long CAP=argc>2?atoll(argv[2]):2000000;
     vector<int>hs={1,121,169,289,361,529};
     printf("k,h,seed,states,miss,pure,nonpure,pureHIT,annihilates,capped,witness\n");
-    for(int k=3;k<=M;k+=4){
+    int KMIN=getenv("KMIN")?atoi(getenv("KMIN")):3;
+    for(int k=KMIN;k<=M;k+=4){
         if(!getenv("ALLK")&&isprime(k))continue;
         vector<int>U;for(int x=1;x<k;x++)if(gcd((long long)x,(long long)k)==1)U.push_back(x);
         for(int h:hs){

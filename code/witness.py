@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 """k >= 19 の各 (shift k, hard class h) に対し「miss かつ非 pure」な実素数を構成する。
 
-topics/07-character-annihilation-atlas.md の「k >= 19 は構成的に不成立」の再現用。
-閉包モデルを一切使わず、実素数 p と C_k = (p+k)/4 の完全分解だけで判定する。
+topics/07-character-annihilation-atlas.md の「k >= 19 で同値が成立するのは 9 組だけ」の
+再現用。閉包モデルを一切使わず、実素数 p と C_k = (p+k)/4 の完全分解だけで判定する。
+箱は正しい exact box、すなわち C_k^2 の約数（素因子ごとに指数 0..2e）の mod k 剰余。
 
   python3 code/witness.py            # k = 19..403, 6 hard class, 上限 p < 2e7
   python3 code/witness.py 19 63 1e6  # k の範囲と探索上限を指定
 
-出力: 各 (k,h) の最小 witness。witness の無い組があれば末尾に列挙される
-      (既知の結果では 582 組すべてに witness があり、最大でも p = 66,529)。
+出力: 各 (k,h) の最小 witness。witness の無い組があれば末尾に列挙される。
+      既知の結果 (p < 10^8 の C++ 監査): witness が無いのは
+      (19,121) (31,169) (31,289) (31,529) (35,121) (35,361) (47,121) (47,289) (59,361)
+      の 9 組。(71,289) は p = 3,098,209 に witness があるので 2e6 では見落とす。
+      witness を持つ組の最大の最小 witness はその p = 3,098,209。
 """
 import sys
 from sympy import isprime, factorint
@@ -25,9 +29,9 @@ def witness(k, h, lim):
         if isprime(p) and p % 4 == 1:
             C = (p + k) // 4
             f = factorint(C)
-            S = {1}                     # 約数の mod k 剰余集合
+            S = {1}                     # C^2 の約数の mod k 剰余集合 (exact box)
             for q, e in f.items():
-                S = {(a * q ** i) % k for a in S for i in range(e + 1)}
+                S = {(a * q ** i) % k for a in S for i in range(2 * e + 1)}
             miss = t1 not in S and (-C) % k not in S
             pure = all(J(q, k) == 1 for q in f)   # jacobi(q,k) = (p/q)
             if miss and not pure:
