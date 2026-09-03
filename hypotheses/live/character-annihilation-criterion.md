@@ -43,11 +43,13 @@ character `-1` の miss state が全て消える条件を特徴づける。
 
 ## 条件候補の状態（正しいデータで再点検）
 
-- **seed が QR kernel を生成する**: 成立 30 組すべてが満たす**必要条件**。09-01 に
+- **seed が QR kernel を生成する**: **必要条件として `k ≤ 403` で証明済み**
+  （[seed-kernel-necessity](seed-kernel-necessity.md)）。09-01 に
   「`k=35` が反例」として棄却したのは部分箱の産物で撤回。十分ではない
-  （`k ≤ 135` で満たしつつ不成立の組が 112）。
+  （満たしつつ不成立の組が 359）。
 - **center fiber が 1 点（`k | 840`）**: 必要でも十分でもない。ただし
   `⟨seed⟩ ⊇ ker χ` と組むと 24 組中 20 組が成立し、外れるのは `k=35` の 4 class のみ。
+  この 20 組は E=2 帰着の有限検査で閉包非依存に**証明済み**（`code/even_e_cases.py`）。
 - **`t₁ ≠ t₂`**: `h=1` では常に `t₂ = t₁`。center 固定・seed 生成の下でも
   `k=35, h=1` は不成立。
 - **composite であること**: 成立する `k` に素数（3, 7, 11, 19, 31, 47, 59）が多く、
@@ -55,14 +57,14 @@ character `-1` の miss state が全て消える条件を特徴づける。
 
 ## 現在の見立て
 
-`⟨seed⟩ ⊇ ker χ` が必要条件として立ったので、次は
+`⟨seed⟩ ⊇ ker χ` の必要性（`k ≤ 403`、および `gcd(k,210)=1` で index ≥ 3 の一般 `k`）と
+center 固定 20 組の証明は済んだ（[2026-09-03 seed 必要条件](../../updates/2026-09-03-seed-necessity-and-even-e.md)）。次は
 
-1. 「`⟨seed⟩ ⊉ ker χ` ⇒ 非 pure な miss state が存在する」を `k` に依存しない形で
-   証明する。閉包の witness path（例: `k=19, h=169` は seed 1 に NR 1 個）を使う。
-2. `⟨seed⟩ ⊇ ker χ` かつ center 固定の 24 組で、`k=35` の 4 class だけが落ちる理由を
-   miss state の書き下しで説明する（[k=35 定理](k35-pure-support-theorem.md)の表）。
-3. center が動く成立 10 組（`k=11,19,31,47,59`）で、どの fiber が生き残るかを
-   [seed 補題](k11-seed15-lemma.md)の形（`t₁` を外せる NR 剰余の本数）で分類する。
+1. center が動く成立 10 組（`k=11,19,31,47,59`）の証明。`k=31,47,59` は
+   `Div(seed²) ⊊ ker χ` なので、E 奇数の状態も含めた場合分けが要る。
+2. `⟨seed⟩ ⊇ ker χ` を満たして不成立の 359 組を分ける第二の条件。`k=35` の
+   4 class の miss 組 `(r₁,r₂,m)` が最小の手がかり。
+3. `gcd(k,210) > 1`、`k ∤ 840` での fiber を含む一般命題。
 
 関連: [07. atlas](../../topics/07-character-annihilation-atlas.md)、
 [箱の訂正](../../updates/2026-09-03-box-correction.md)、

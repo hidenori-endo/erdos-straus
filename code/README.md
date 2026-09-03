@@ -1,7 +1,7 @@
 # 再現コード
 
 `updates/` と `topics/07` の数値のうち、character annihilation atlas に関わるものを
-再現するための 4 本。既存の会話由来の数値と違い、ここに書かれた値は本リポジトリで
+再現するための 6 本。既存の会話由来の数値と違い、ここに書かれた値は本リポジトリで
 実行して得たものである。
 
 ~~~sh
@@ -94,6 +94,25 @@ sympy が必要。`k ≥ 19` で witness が無いのは 9 組
 - `Div(C_k)` 部分箱では miss だが `Div(C_k²)` では hit の `(p,k)` が存在する（266 組）
 
 を assert で確認する。
+
+## `even_e_cases.py`
+
+center 固定 shift `k ∈ {3,7,15,35}` で、E=2 帰着の有限検査により「非 pure ⇒ hit」を
+閉包モデル非依存に証明する。失敗 class では miss 組 `(r₁,r₂,m)` を列挙する。
+
+```sh
+python3 code/even_e_cases.py        # k = 3, 7, 15, 35
+python3 code/even_e_cases.py 35
+```
+
+## `seed_necessity.py`
+
+`⟨seed⟩ ⊉ ker χ` の各 `(k,h)` に対し、E1 / E2 の subgroup 構成で閉包の非 pure miss state を
+作れるかを検査する。`k ≤ 403` では 217 組すべてが cover される（1.5 秒）。
+
+```sh
+python3 code/seed_necessity.py 403
+```
 
 ## 教訓（2026-09-01 の訂正が逆だった）
 

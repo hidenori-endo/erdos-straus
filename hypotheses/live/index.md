@@ -11,6 +11,7 @@
 - [Character annihilation criterion](character-annihilation-criterion.md)
 - [QR-support 十分性](qr-support-sufficiency.md)
 - [k=35 pure-support 定理](k35-pure-support-theorem.md)
+- [seed-kernel necessity](seed-kernel-necessity.md)
 - [k=11 の seed 15 補題](k11-seed15-lemma.md)
 - [Prime-or-complement factor lemma](prime-or-complement-factor-lemma.md)
 - [External shift log-squared conjecture](external-shift-log-squared-conjecture.md)

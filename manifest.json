@@ -58,6 +58,17 @@
         "30-pair equivalence atlas",
         "seed generates ker chi is necessary"
       ]
+    },
+    {
+      "source_url": null,
+      "captured_at": "2026-09-03",
+      "status": "in-repo verification",
+      "digest": "updates/2026-09-03-seed-necessity-and-even-e.md",
+      "topics": [
+        "even-E shifts",
+        "finite proof of fixed-center annihilation (k=3,7,15,35)",
+        "seed generates ker chi is necessary (k<=403, constructive)"
+      ]
     }
   ],
   "decoration_removed": [

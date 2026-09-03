@@ -19,6 +19,7 @@
 - [2026-09-01 closure の訂正と character atlas の再構成](updates/2026-09-01-closure-correction.md)
 - [2026-09-03 external-NR と fab sieve の追加検証](updates/2026-09-03-addendum.md)
 - [2026-09-03 箱の訂正: exact box は Div(C_k²)、k=35 定理の復活と 30 組 atlas](updates/2026-09-03-box-correction.md)
+- [2026-09-03 seed 必要条件の構成的証明と center 固定 shift の有限証明](updates/2026-09-03-seed-necessity-and-even-e.md)
 
 ## 再現コード
 

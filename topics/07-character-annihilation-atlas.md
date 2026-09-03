@@ -118,12 +118,21 @@ mandatory seed だけから来る。`h=169,289,529` では `15 | C_11`、
 `k=19, h=121` は 09-01 addendum §2 の「class 121 での q=19 saturation」そのもので、
 seed `5·7` が `Q_19` を生成することから初等的に従う。
 
+## center 固定 shift（`k=3,7,15,35`）は有限検査で証明済み
+
+hard prime では `χ(C_k) = jacobi(p,k) = +1` なので p-NR 因子の個数は偶数。非 pure なら
+NR 剰余 `r₁,r₂` と残り `m` について箱は `Div(seed²){1,r₁,r₁²}{1,r₂,r₂²}{1,m,m²}` を
+含むので、全 `(r₁,r₂)` の有限検査で「非 pure ⇒ hit」が示せる。`k=3,7,15` の全 class と
+`k=35` の `h=121,361` は missing 0（`code/even_e_cases.py`）。閉包モデル非依存の証明である
+（[seed 必要条件](../updates/2026-09-03-seed-necessity-and-even-e.md) §2）。
+
 ## 何が annihilation を決めるのか
 
 `k ≤ 135` の 204 組を 3 条件で分類した結果
 （[箱の訂正](../updates/2026-09-03-box-correction.md) §6）:
 
-- **`⟨seed⟩ ⊇ ker χ` は必要条件**（成立組すべてが満たし、満たさない 61 組は全滅）。
+- **`⟨seed⟩ ⊇ ker χ` は必要条件**。`k ≤ 403` で構成的に証明済み、`gcd(k,210)=1` かつ
+  index ≥ 3 なら一般 `k` でも成立（[seed-kernel-necessity](../hypotheses/live/seed-kernel-necessity.md)）。
   09-01 で「`k=35` が反例」として棄却されたが、それは部分箱の産物だった。
 - 十分ではない。満たしても `k=23, 39, 55` などは全 class で不成立。
 - center 固定（`k | 840`、すなわち `k ∈ {3,7,15,35}`）かつ `⟨seed⟩ ⊇ ker χ` の
@@ -133,9 +142,9 @@ seed `5·7` が `Q_19` を生成することから初等的に従う。
 `k=11` の解析が示したのは、効いているのが **seed の約数剰余集合が `t₁` を外せる
 NR 剰余を何本残すか**、そしてそれが `t₂` で潰れるかだという点である。残るのは
 
-1. `⟨seed⟩ ⊉ ker χ` ⇒ 非 pure miss が存在する、の証明。
-2. `k=35` の 4 class の non-pure miss state（計 14 状態）の初等的な書き下し。
-3. center が動く 10 組の fiber ごとの分類。
+1. center が動く成立 10 組（`k=11,19,31,47,59`）の証明。
+2. `⟨seed⟩ ⊇ ker χ` を満たして不成立の組を分ける第二の条件（`k=35` の 4 class が最小例）。
+3. `gcd(k,210) > 1`、`k ∤ 840` での fiber を含む一般命題。
 
 ## 状態
 

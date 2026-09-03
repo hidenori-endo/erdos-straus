@@ -1,7 +1,7 @@
 # k=35 の pure-support 定理（class 121, 361）
 
-- status: **live / range-free に成立**（閉包 + `p<10^8` 監査）。2026-09-01 に一度
-  rejected とされたが、2026-09-03 の箱の訂正で復活
+- status: **proved**（E=2 帰着の 78 case 検査、閉包モデル非依存）+ 閉包 + `p<10^8` 監査。
+  2026-09-01 に一度 rejected とされたが、2026-09-03 の箱の訂正で復活
 - source: 2026-09-01 会話の追加検証で提出、2026-09-01 closure 訂正で「反証」、
   2026-09-03 box 訂正で復活
 
@@ -15,7 +15,17 @@ p ≡ 361 (mod 840)  ⇒  同上
 ここで miss は正しい箱 `Div(C_35²) mod 35` が `t₁ = 26`、`t₂ = -C_35` のどちらも
 含まないこと。他の 4 class（`h = 1, 169, 289, 529`）では偽。
 
-## 根拠
+## 証明（有限検査つき）
+
+hard prime では `χ(C_35) = jacobi(p,35) = (p/5)(p/7) = +1` なので、p-NR 素因子の個数 `E` は
+偶数。非 pure なら `E ≥ 2` で、NR 剰余 `r₁, r₂` と残り `m ≡ c/(3r₁r₂) ∈ Q` について
+真の箱は必ず `B = {1,3,9}·{1,r₁,r₁²}·{1,r₂,r₂²}·{1,m,m²}` を含む。
+`(r₁ ≤ r₂) ∈ NR²` の 78 組すべてで `B ∋ 26` または `B ∋ t₂` であることを
+`code/even_e_cases.py 35` が確認する（`h=121`: `t₂=31`、`h=361`: `t₂=6`、いずれも missing 0）。
+`h=361` は `{1,m}` だけでも足りる。詳細は
+[2026-09-03 seed 必要条件](../../updates/2026-09-03-seed-necessity-and-even-e.md) §2。
+
+## 根拠（計算）
 
 - `r²` 遷移の閉包（[`code/closure.cpp`](../../code/README.md)）: reachable 394 状態
   （NOPRUNE）。class 121 の center に一致する miss は 2 状態、class 361 は 3 状態で、
@@ -53,9 +63,10 @@ seed は 6 class 全てで `3`、`⟨3⟩ = ker χ`（位数 12）、center は 
 | 361 | 29 | 6 | 3 | 0 |
 | 529 | 1 | 34 | 6 | 2 |
 
-`h=1` は `t₂ = t₁` で target が 1 本になる。残る 3 class の non-pure miss state
-（合計 6 状態）を書き下して、[k=11 補題](k11-seed15-lemma.md)と同じ形の初等証明に
-することが次の一手。
+`h=1` は `t₂ = t₁` で target が 1 本になる。失敗 4 class の miss 組 `(r₁,r₂,m)` は
+`code/even_e_cases.py` が列挙する（`h=1`: 20、`169`: 7、`289`: 2、`529`: 5）。
+それぞれ実素数の最小 witness（`26041 = 3·41·53` → `(6,18,1)` など）に対応する。
+なぜ `c ∈ {4, 29}` のときだけ全 78 組が hit するのか、の構造的説明は未解決。
 
 関連: [2026-09-03 箱の訂正](../../updates/2026-09-03-box-correction.md)、
 [07. atlas](../../topics/07-character-annihilation-atlas.md)、

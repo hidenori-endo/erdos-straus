@@ -31,13 +31,16 @@ Erdos–Straus/
 │   ├── 2026-09-01-addendum.md
 │   ├── 2026-09-01-closure-correction.md
 │   ├── 2026-09-03-addendum.md
-│   └── 2026-09-03-box-correction.md
+│   ├── 2026-09-03-box-correction.md
+│   └── 2026-09-03-seed-necessity-and-even-e.md
 └── code/
     ├── README.md
     ├── closure.cpp
     ├── audit.cpp
     ├── witness.py
-    └── box_check.py
+    ├── box_check.py
+    ├── even_e_cases.py
+    └── seed_necessity.py
 ```
 
 ## Reading order
@@ -49,5 +52,5 @@ Erdos–Straus/
    `2026-09-01-addendum.md` §3 の `k=35` を「反証」したが、その訂正自体が箱の誤りで、
    `2026-09-03-box-correction.md` で撤回された（`k=35` 定理は正しい）。atlas の
    現行版は `topics/07` と `2026-09-03-box-correction.md`。
-5. `code/` の 4 本（有限閉包 / 実素数監査 / 反例構成 / 箱の総当たり検証）で atlas を
-   再現できる。
+5. `code/` の 6 本（有限閉包 / 実素数監査 / 反例構成 / 箱の総当たり検証 /
+   center 固定 shift の有限証明 / seed 必要条件の構成）で atlas を再現できる。
