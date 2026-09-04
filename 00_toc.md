@@ -12,6 +12,8 @@
 - [06. Consecutive integers とcross-shift](topics/06_cross-shift-and-consecutive-integers.md)
 - [07. Character annihilation atlas](topics/07-character-annihilation-atlas.md)
 - [08. External-NR、full box、fab sieve](topics/08-external-nr-and-fab-sieve.md)
+- [09. Global local classification](topics/09-global-local-classification.md)
+- [10. Adaptive external-NR factor forcing](topics/10-adaptive-external-nr.md)
 
 ## 追加更新
 
@@ -20,6 +22,11 @@
 - [2026-09-03 external-NR と fab sieve の追加検証](updates/2026-09-03-addendum.md)
 - [2026-09-03 箱の訂正: exact box は Div(C_k²)、k=35 定理の復活と 30 組 atlas](updates/2026-09-03-box-correction.md)
 - [2026-09-03 seed 必要条件の構成的証明と center 固定 shift の有限証明](updates/2026-09-03-seed-necessity-and-even-e.md)
+- [2026-09-03 intermediate fiber 全域分類](updates/2026-09-03-intermediate-fiber-global.md)
+- [2026-09-03 seed-kernel 必要性の全域証明](updates/2026-09-03-seed-kernel-global-proof.md)
+- [2026-09-03 global local classification と次の bottleneck](updates/2026-09-03-global-local-classification-and-next-bottleneck.md)
+- [2026-09-03 h=1, k=23 thin state](updates/2026-09-03-h1-k23-thin-state.md)
+- [2026-09-04 adaptive external-NR factor forcing](updates/2026-09-04-adaptive-nr-factor-forcing.md)
 
 ## 再現コード
 

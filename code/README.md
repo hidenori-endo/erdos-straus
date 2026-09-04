@@ -1,7 +1,7 @@
 # 再現コード
 
 `updates/` と `topics/07` の数値のうち、character annihilation atlas に関わるものを
-再現するための 6 本。既存の会話由来の数値と違い、ここに書かれた値は本リポジトリで
+再現するための 13 本。既存の会話由来の数値と違い、ここに書かれた値は本リポジトリで
 実行して得たものである。
 
 ~~~sh
@@ -113,6 +113,32 @@ python3 code/even_e_cases.py 35
 ```sh
 python3 code/seed_necessity.py 403
 ```
+
+## 2026-09-03/04 添付コード
+
+添付された完全な検証コードは次の通り。出力は再現用の有限計算であり、証明そのものではない。
+
+- `seed_necessity_fast.cpp`: E1/E2i/E2g による seed 必要性の高速検証
+- `cross_shift_scan.cpp`: 30 組の pure 条件を同一 prime に課す cross-shift 集計
+- `adaptive_cover.cpp`: base shift 後の greedy adaptive cover
+- `nr_adaptive.cpp`: external-NR prime 一個ずつの induced shift 検査
+- `nr_group_adaptive.cpp`: 同一 induced shift の NR factor を束ねる検査
+- `nr_adaptive_sample.cpp`: 全 hard class の大きい p の乱択 stress test
+- `combined_cycle_scan.cpp`: exact two-target box を入れた external cycle の反証確認
+
+例:
+
+```sh
+g++ -O2 -std=c++20 code/seed_necessity_fast.cpp -o /tmp/seed_necessity_fast
+/tmp/seed_necessity_fast 403
+g++ -O2 -std=c++20 code/nr_adaptive.cpp -o /tmp/nr_adaptive
+/tmp/nr_adaptive 100000000 1000
+```
+
+`intermediate_fiber_global.cpp` と `quotient_necessity_proof.py` は指定会話の添付が途中で
+終わっており、完全なプログラムではないため runnable code としては追加していない。結果の
+論理は `updates/2026-09-03-intermediate-fiber-global.md` と
+`updates/2026-09-03-seed-kernel-global-proof.md` に整理した。
 
 ## 教訓（2026-09-01 の訂正が逆だった）
 

@@ -141,4 +141,4 @@ shift だけを見ていた旧 atlas の枠組み自体が狭かった。
 
 関連: [07. Character annihilation atlas](../topics/07-character-annihilation-atlas.md)、
 [QR-support 十分性](../hypotheses/live/qr-support-sufficiency.md)、
-[k=35 pure-support 定理候補（棄却）](../hypotheses/rejected/k35-pure-support-theorem.md)
+[k=35 pure-support 定理候補（その後復活）](../hypotheses/live/k35-pure-support-theorem.md)

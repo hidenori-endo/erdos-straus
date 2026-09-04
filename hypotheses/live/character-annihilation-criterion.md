@@ -1,9 +1,9 @@
 # Mandatory seed + exact center による character annihilation
 
-- status: live / classification problem（2026-09-03 箱の訂正で atlas を再構成）
+- status: local classification **proved**; ES 本体への接続は live problem
 - source: 2026-09-01 会話の追加検証、2026-09-01 closure 訂正（撤回）、2026-09-03 箱の訂正
-- confidence: 成立する 30 組は range-free 閉包と `p<10^8` 監査の両方で確定。
-  一般 criterion は未確立。
+- confidence: `annihilation => H=Q` と、`H=Q` の fixed/full/intermediate 分類は
+  全域の構成・有限検査で確定。成立する 30 組は range-free の正結果。
 
 ## 問い
 
@@ -43,7 +43,7 @@ character `-1` の miss state が全て消える条件を特徴づける。
 
 ## 条件候補の状態（正しいデータで再点検）
 
-- **seed が QR kernel を生成する**: **必要条件として `k ≤ 403` で証明済み**
+- **seed が QR kernel を生成する**: **必要条件として全 admissible `k` で証明済み**
   （[seed-kernel-necessity](seed-kernel-necessity.md)）。09-01 に
   「`k=35` が反例」として棄却したのは部分箱の産物で撤回。十分ではない
   （満たしつつ不成立の組が 359）。
@@ -57,14 +57,12 @@ character `-1` の miss state が全て消える条件を特徴づける。
 
 ## 現在の見立て
 
-`⟨seed⟩ ⊇ ker χ` の必要性（`k ≤ 403`、および `gcd(k,210)=1` で index ≥ 3 の一般 `k`）と
-center 固定 20 組の証明は済んだ（[2026-09-03 seed 必要条件](../../updates/2026-09-03-seed-necessity-and-even-e.md)）。次は
+`⟨seed⟩ ⊇ ker χ` の必要性は全域で証明済みで、center fixed/full/intermediate の分類も完了した
+（[2026-09-03 全域証明](../../updates/2026-09-03-seed-kernel-global-proof.md)）。次は
 
-1. center が動く成立 10 組（`k=11,19,31,47,59`）の証明。`k=31,47,59` は
-   `Div(seed²) ⊊ ker χ` なので、E 奇数の状態も含めた場合分けが要る。
-2. `⟨seed⟩ ⊇ ker χ` を満たして不成立の 359 組を分ける第二の条件。`k=35` の
-   4 class の miss 組 `(r₁,r₂,m)` が最小の手がかり。
-3. `gcd(k,210) > 1`、`k ∤ 840` での fiber を含む一般命題。
+1. 30組の local annihilation を、複数 shift の実際の prime-support 制約へ接続する。
+2. `k=23` の thin miss のような条件から `R,R+1` の consecutive cofactor を同時に扱う。
+3. adaptive external-NR factor forcing を、有限観測から証明へ引き上げる。
 
 関連: [07. atlas](../../topics/07-character-annihilation-atlas.md)、
 [箱の訂正](../../updates/2026-09-03-box-correction.md)、

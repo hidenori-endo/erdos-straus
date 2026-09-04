@@ -59,3 +59,6 @@ forbid する。これを q=3,7 と組み合わせると、有限-M の sieve di
 非 sieve 的議論を適用する residual を明示するための前処理である。
 
 状態: external-NR の限定 rule は棄却、full-box conjecture と fab sieve は live。
+
+関連: [09. global local classification](09-global-local-classification.md)、
+[10. adaptive external-NR](10-adaptive-external-nr.md)。

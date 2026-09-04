@@ -16,3 +16,4 @@
 - [Prime-or-complement factor lemma](prime-or-complement-factor-lemma.md)
 - [External shift log-squared conjecture](external-shift-log-squared-conjecture.md)
 - [Small-fab sieve dimension](fab-sieve-dimension.md)
+- [Adaptive external-NR factor forcing](adaptive-external-nr-factor-forcing.md)
