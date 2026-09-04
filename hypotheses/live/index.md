@@ -19,3 +19,4 @@
 - [Adaptive external-NR factor forcing](adaptive-external-nr-factor-forcing.md)
 - [最小 hit shift bound](min-hit-shift-bound.md)
 - [証拠複雑度 cert(p)](certificate-complexity.md)
+- [恒等式層の階層 (定理 3)](layer-hierarchy.md)

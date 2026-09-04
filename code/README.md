@@ -184,6 +184,25 @@ g++ -O2 -std=c++20 code/tradeoff.cpp        -o /tmp/tradeoff        && /tmp/trad
 `cert_complexity 1000000000` は約 75 秒で hard 1,587,581 / 最大 cert 395 / 幾何平均 17.2。
 `tradeoff` の `D=1` 行は「`p+4` が `3 (mod 4)` の素因子を持つか」と一致する（補題 2）。
 
+## 2026-09-04 層の同定コード
+
+[層の同定](../updates/2026-09-04-layer-identification.md) の 3 本。定理 3
+「層 `(d,e)` は `n=p+4e` が `k ≡ -n (mod 4d)` なる約数を持つことと同値」を扱う。
+
+- `layers.cpp`: 定理 3 の判定と `Div(C_k^2)` 総当たりの突き合わせ（`d ≤ DMAX`）。
+- `fast_layers.cpp`: 定理 3 だけを使った予算 `D` の未被覆密度。区間指定可。
+- `failchar.cpp`: 「失敗 ⟺ `-n ∉ ⟨素因子 mod 4d⟩`」が成り立つ `d` の判定。
+
+~~~sh
+g++ -O2 -std=c++20 code/layers.cpp      -o /tmp/layers      && /tmp/layers      3000000 8 20003
+g++ -O2 -std=c++20 code/fast_layers.cpp -o /tmp/fast_layers && /tmp/fast_layers 10000000 100000000 32
+g++ -O2 -std=c++20 code/failchar.cpp    -o /tmp/failchar    && /tmp/failchar    10000000
+~~~
+
+`layers 3000000 8 20003` の mismatch 4 件は総当たり側の `k` 打ち切りによるもので、
+定理側が正しい（`k` = 20751, 54311, 30999, 34647）。`failchar` は `d ∈ {1,2,3,6}` で
+不一致 0、`d ∈ {4,5,7,8}` で不一致あり ―― `(Z/4d)^*` の指数が 2 かどうかで分かれる。
+
 ## 教訓（2026-09-01 の訂正が逆だった）
 
 09-01 の訂正は「`r²` は指数 1 の素因子に対して実在しない約数」として `r²` 遷移を
