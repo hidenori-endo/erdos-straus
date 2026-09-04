@@ -26,13 +26,15 @@ int main(int argc,char**argv){
   for(ll i=2;i<=Nmax;i++) if(!spf[i]) for(ll j=i;j<=Nmax;j+=i) if(!spf[j]) spf[j]=(int)i;
   vector<int> pr; for(int i=2;i<=RB;i++) if(spf[i]==i) pr.push_back(i);
   auto isp=[&](ll n){ if(n<2)return false; if(n<=Nmax) return spf[n]==n;
-    for(ll q=2;q*q<=n;q++) if(n%q==0) return false; return true; };
+    for(ll q=2;q*q<=n;q++) if(n%q==0) return false;
+    return true; };
 
   map<int,ll> hardC, survC;
   vector<ll> firstHit(MAXRANK+2,0);
   ll surv=0, persist=0;
   map<int,ll> missRankHist;   // rank -> miss 数 (survivor のみ)
   map<int,ll> seenRankHist;
+  map<int,ll> missE1ByRank, missKltRByRank, leastMassLemmaViolations;
   // miss 構造
   ll missTot=0, missE1=0, missEeven=0, sameShiftPair=0, missWithSecondNR=0;
   map<int,ll> missByK, seenByK;
@@ -42,7 +44,8 @@ int main(int argc,char**argv){
   for(ll t=0;;t++){
     bool any=false;
     for(int h:HS){ ll p=840*t+h; if(p>=LIM) continue; any=true; if(p<11) continue;
-      if(!isp(p)) continue; hardC[h]++;
+      if(!isp(p)) continue;
+      hardC[h]++;
       ll N=(p+3)/4;
       bool cand=true;
       for(int j: AT[h]){ Fac F=factor(N+j); for(auto&[q,a]:F.f) if(jacobi(q,p)==-1){cand=false;break;} if(!cand)break; }
@@ -60,7 +63,14 @@ int main(int argc,char**argv){
         bool hit=false; for(ll d:divs){int rr=(int)(d%k); if(rr==t1||rr==t2){hit=true;break;}}
         seenRankHist[rank]++; seenByK[k]++;
         if(!hit){ missRankHist[rank]++; missByK[k]++; missTot++;
-          if(E==1) missE1++; if(E%2==0) missEeven++;
+          if(E==1){ missE1++; missE1ByRank[rank]++; }
+          if(k<r){
+            missKltRByRank[rank]++;
+            // The mass lemma uses that r is the least NR prime, so it only
+            // applies at rank zero.  Later ranks can legitimately have E=1.
+            if(rank==0 && E<2) leastMassLemmaViolations[rank]++;
+          }
+          if(E%2==0) missEeven++;
           if(secondNR){ missWithSecondNR++; if(secondNR> j) sameShiftPair++; } }
         else if(fh<0) fh=rank;
         rank++; }
@@ -76,8 +86,11 @@ int main(int argc,char**argv){
   printf("\n# survivor: first-hit NR rank (exact Div(C^2) box)\nrank count cum\n");
   ll cum=0; for(int i=0;i<MAXRANK;i++) if(firstHit[i]){cum+=firstHit[i];printf("%3d %8lld %8lld\n",i,firstHit[i],cum);}
   printf("none %lld\n",persist);
-  printf("\n# survivor: miss rate by NR rank\nrank seen miss rate\n");
-  for(int i=0;i<MAXRANK;i++) if(seenRankHist.count(i)) printf("%3d %8lld %8lld %.4f\n",i,seenRankHist[i],missRankHist[i],(double)missRankHist[i]/seenRankHist[i]);
+  printf("\n# survivor: miss structure by NR rank\nrank seen miss rate   E==1   k<r least_lemma_viol\n");
+  for(int i=0;i<MAXRANK;i++) if(seenRankHist.count(i))
+    printf("%3d %8lld %8lld %.4f %7lld %7lld %10lld\n",i,seenRankHist[i],
+      missRankHist[i],(double)missRankHist[i]/seenRankHist[i],missE1ByRank[i],
+      missKltRByRank[i],leastMassLemmaViolations[i]);
   printf("\n# miss structure: total=%lld  E==1:%lld  E even:%lld  has 2nd NR factor:%lld  (2nd NR induces same shift):%lld\n",
      missTot,missE1,missEeven,missWithSecondNR,sameShiftPair);
   printf("\n# miss rate by induced shift k (top 25)\nk seen miss rate\n");

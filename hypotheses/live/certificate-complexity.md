@@ -1,6 +1,6 @@
 # 証拠複雑度 `cert(p)` は小さい
 
-- status: live / conjecture（`D=1` 層のみ証明済み）
+- status: live / 増大率は conjecture（各 Type II 層の閉じた形は証明済み）
 - source: 2026-09-04 の測定（[certificate complexity](../../updates/2026-09-04-certificate-complexity.md)）
 - confidence: `p < 10^9` の hard prime 全数で `cert ≤ 395`。証明なし。
 
@@ -30,9 +30,14 @@ cert(p) = min over k ≡ 3 (mod 4), over hitting e | C_k²,  max(k, d(e))
 
 ## 有界にならない理由
 
-`cert` が有界なら有限の covering system で ES が証明できる。Mordell の 840 の議論は
-その最小の場合で、hard class（平方剰余類）が残ることが既知。よって `cert` は非有界で、
-問題はその増大率。測定は `(log p)^2` 以下を支持する。
+`cert` は非有界である。上限 `B` に対し、`840`、全 `k≤B`、全 `4d (d≤B)` の公倍数を
+`L` として `p≡1 (mod L)` なる素数を Dirichlet の定理で取る。もし `k,d≤B` の証拠が
+あれば、`d|C_k` の全素因子は transfer により `χ_k=+1`、従って `χ_k(e)=+1`。一方
+`p≡1 (mod k)` なので Type I / II target はともに `χ_k=-1` となり矛盾する。詳細は
+[certificate complexity update](../../updates/2026-09-04-certificate-complexity.md#1-証拠の最小約数-de)。
+
+従って問題は増大率であり、測定は `(log p)^2` 以下を支持する。この議論は `k,d` の
+同時有界性を否定するが、`d` だけを固定して `k` を非有界に許す可能性は否定しない。
 
 ## 証明済みの層: `D = 1`
 
@@ -51,7 +56,9 @@ Landau–Ramanujan 型集合。したがってこの 1 層だけで hard prime �
 `h+4 ∈ {5,125,173,293,365,533}` の素因子が全て `1 (mod 4)` なので、一般の
 `n ≡ 1 (mod 4)` での失敗密度 ~30% より高くなる。
 
-## 次
+## 後続結果
 
-`D = 2, 4, 8` の各層の失敗集合を `D=1` と同様に同定できるか。層ごとの失敗集合が
-独立に近ければ、共通部分の密度は層数 `t` に対して `(log p)^{-t/2}` 程度まで落ちる。
+[恒等式層の階層](layer-hierarchy.md)で全 Type II 層が単一の閉じた形に同定された。
+特に指数 2 の 9 層は、単一素因子 certificate だけでも共通失敗 prime が
+`O(x/(log x)^3)`、exact character sieve では `O(x/(log x)^(11/2))` となる。残る本質は
+層予算 `D` に一様な評価と、指数 `>2` の法での multiplicity の扱いである。

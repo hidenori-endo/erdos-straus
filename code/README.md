@@ -192,11 +192,16 @@ g++ -O2 -std=c++20 code/tradeoff.cpp        -o /tmp/tradeoff        && /tmp/trad
 - `layers.cpp`: 定理 3 の判定と `Div(C_k^2)` 総当たりの突き合わせ（`d ≤ DMAX`）。
 - `fast_layers.cpp`: 定理 3 だけを使った予算 `D` の未被覆密度。区間指定可。
 - `failchar.cpp`: 「失敗 ⟺ `-n ∉ ⟨素因子 mod 4d⟩`」が成り立つ `d` の判定。
+- `exponent2_layers.cpp`: 指数 2 の法に属する **9 層**をまとめて検査し、exact な
+  共通失敗率、prime-atom sieve の上界集合、局所 sieve 次元 `2`（素数条件込みで `3`）
+  を再現する。さらに odd character による exact miss の分離を全列挙し、4096 character
+  assignment、exact 層の次元 `9/2`（素数条件込みで `11/2`）を確認する。
 
 ~~~sh
 g++ -O2 -std=c++20 code/layers.cpp      -o /tmp/layers      && /tmp/layers      3000000 8 20003
 g++ -O2 -std=c++20 code/fast_layers.cpp -o /tmp/fast_layers && /tmp/fast_layers 10000000 100000000 32
 g++ -O2 -std=c++20 code/failchar.cpp    -o /tmp/failchar    && /tmp/failchar    10000000
+g++ -O2 -std=c++20 code/exponent2_layers.cpp -o /tmp/exponent2_layers && /tmp/exponent2_layers 10000000 100000000
 ~~~
 
 `layers 3000000 8 20003` の mismatch 4 件は総当たり側の `k` 打ち切りによるもので、

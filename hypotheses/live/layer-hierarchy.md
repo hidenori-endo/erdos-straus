@@ -1,6 +1,6 @@
 # 恒等式層の階層 (定理 3)
 
-- status: live / 定理は証明済み、無条件の密度上界は未証
+- status: live / 定理と指数2層の無条件密度上界は証明済み、全層への一様化は未証
 - source: 2026-09-04 の[層の同定](../../updates/2026-09-04-layer-identification.md)
 
 ## 定理 3（証明済み）
@@ -45,7 +45,11 @@ hit した `k` から Type II 解 `(C_k, p(e+C_k)/k, p(C_k²/e + C_k)/k)` が復
 
 ## 未証の部分
 
-指数 2 の 8 層（`d ∈ {1,2,3,6}`、法 4, 8, 12, 24）だけの共通失敗集合に、無条件の
-`(log p)^{-δ}`（`δ ≈ 3`）上界を付けられるか。条件は全て `p + c`（`c ≤ 144`）の素因子の
-`mod 24` 類に関するもので、多変数 Landau–Ramanujan / Selberg sieve の枠内にある。
-どの有限 `D` でも密度は 0 にならない（parity barrier）。
+指数 2 の 9 層（`d ∈ {1,2,3,6}`、法 4, 8, 12, 24）については、単一素因子
+certificate の Selberg sieve により共通失敗 prime が `O(x/(log x)^3)`、hard prime
+内の相対割合が `O((log x)^-2)`。さらに odd character による exact miss の分離で、
+exact 共通失敗 prime は `O(x/(log x)^(11/2))`、相対 `O((log x)^(-9/2))` まで証明済み。
+詳細は [proof-route audit](../../updates/2026-09-04-route-audit-and-exponent2-sieve.md)。
+固定 `D` で未被覆 prime が無限に残るかは未証。`cert(p)` の非有界性は `k,d` の同時有界を
+否定するだけで、固定 `D`・非有界 `k` の可能性までは否定しない。upper-bound sieve 単独では
+parity barrier のため空集合を導けない。
