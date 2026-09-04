@@ -126,6 +126,18 @@
         "all fixed Type-II layer sieve bound",
         "uniform-in-D bottleneck"
       ]
+    },
+    {
+      "source_url": null,
+      "captured_at": "2026-09-04",
+      "status": "in-repo verification",
+      "digest": "updates/2026-09-04-uniform-escape-and-character-majorant.md",
+      "topics": [
+        "character-kernel compression",
+        "uniform escape counterexample",
+        "progressive survivor escape audit",
+        "cross-layer low-escape target"
+      ]
     }
   ],
   "decoration_removed": [

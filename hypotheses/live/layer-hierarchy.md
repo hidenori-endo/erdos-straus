@@ -1,6 +1,6 @@
 # 恒等式層の階層 (定理 3)
 
-- status: live / 各固定 `D` の無条件密度上界は証明済み、`D=D(x)` への一様化は未証
+- status: live / 各固定 `D` の無条件密度上界と character 圧縮は証明済み、`D=D(x)` への一様化は未証
 - source: 2026-09-04 の[層の同定](../../updates/2026-09-04-layer-identification.md)
 
 ## 定理 3（証明済み）
@@ -66,3 +66,19 @@ L(D)=sum_{d<=D} 2^omega(d).
 
 従って仮想反例の個数は任意の固定 `A` に対し `O_A(x/(log x)^A)`。証明完了に残るのは、
 この評価を `D=D(x)` にできる一様な定数管理である。
+
+## 一様化 route の精密化
+
+[uniform escape audit](../../updates/2026-09-04-uniform-escape-and-character-majorant.md) により、
+stabilizer が与える部分群の union は character kernel の union に厳密に圧縮できる。割当数は
+
+~~~
+C_D = product_{d<=D} phi(4d)^(2^omega(d)),
+log C_D <= L(D) log(4D).
+~~~
+
+一方、各層の escape cost を絶対定数で抑える有限群補題は偽である。`C_(2m)` に generator
+を `m-1` 個置き、target を `(-1) product(g_i)=g^(-1)` とすると最小 escape は `m-1`。
+実データでも `p=3361`, `(d,e)=(17,17)` が escape 3 なので、観測上の上限 2 は棄却された。
+残る具体的標的は、全層を同時に miss する prime について、正の割合の層で escape が定数以下
+となること（またはその平均版）を shift 間の差を使って示す cross-layer 補題である。

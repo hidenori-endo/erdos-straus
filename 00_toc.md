@@ -32,6 +32,7 @@
 - [2026-09-04 層 D=2,4,8 の同定](updates/2026-09-04-layer-identification.md)
 - [2026-09-04 proof route の監査と指数2層 sieve](updates/2026-09-04-route-audit-and-exponent2-sieve.md)
 - [2026-09-04 高指数層と有限群 sieve 補題](updates/2026-09-04-higher-layer-finite-group-sieve.md)
+- [2026-09-04 uniform escape の反例と character majorant](updates/2026-09-04-uniform-escape-and-character-majorant.md)
 
 ## 再現コード
 

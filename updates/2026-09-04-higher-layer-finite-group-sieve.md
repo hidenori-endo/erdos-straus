@@ -169,4 +169,9 @@ Thus the crude stabilizer allowance grows too quickly to make the displayed boun
 than one: increasing `D` strengthens the negative sieve term but makes the permitted-factor
 term larger at roughly `D` times the rate per layer.  This is a limitation of the current
 majorant, not a no-go theorem for the layer route.  The finite audit's observed escape cost
-at most 2 shows exactly where a sharper uniform lemma could change the balance.
+at most 2 shows exactly where a sharper uniform lemma could change the balance.  The
+subsequent [uniform escape audit](2026-09-04-uniform-escape-and-character-majorant.md)
+proves an exact character-kernel compression, but also finds both a group-theoretic
+unbounded-escape family and the actual escape-3 case `p=3361`, `(d,e)=(17,17)`.  Thus the
+needed strengthening must use simultaneous arithmetic relations between layers, not a
+layer-by-layer finite-group bound.

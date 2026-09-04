@@ -200,7 +200,11 @@ g++ -O2 -std=c++20 code/tradeoff.cpp        -o /tmp/tradeoff        && /tmp/trad
   exact miss を character obstruction（target が生成部分群の外）と multiplicity
   obstruction（部分群内だが実際の指数では到達不能）に分解する。
 - `sieve_budget.cpp`: 全固定層 theorem の `L(D)`、sieve 次元 `1+L(D)/2`、stabilizer
-  escape allowance `B_D` の成長を表示する。
+  escape allowance `B_D`、character assignment budget `C_D` の成長を表示する。
+- `progressive_escape.cpp`: 予算 `D` の同時残余に対し、`(Z/4dZ)^*` の全部分群を独立に
+  列挙して各 miss の厳密な最小 escape cost を測る。`D<=32`。
+- `escape_counterexample.cpp`: `C_(2m)` 上の layer-shaped target に対する最小 escape
+  `m-1` の反例族を全部分群の列挙で確認する。
 
 ~~~sh
 g++ -O2 -std=c++20 code/layers.cpp      -o /tmp/layers      && /tmp/layers      3000000 8 20003
@@ -209,6 +213,8 @@ g++ -O2 -std=c++20 code/failchar.cpp    -o /tmp/failchar    && /tmp/failchar    
 g++ -O2 -std=c++20 code/exponent2_layers.cpp -o /tmp/exponent2_layers && /tmp/exponent2_layers 10000000 100000000
 g++ -O2 -std=c++20 code/higher_layers.cpp -o /tmp/higher_layers && /tmp/higher_layers 1000000 100000000
 g++ -O2 -std=c++20 code/sieve_budget.cpp -o /tmp/sieve_budget && /tmp/sieve_budget
+g++ -O2 -std=c++20 code/progressive_escape.cpp -o /tmp/progressive_escape && /tmp/progressive_escape 11 100000000 32
+g++ -O2 -std=c++20 code/escape_counterexample.cpp -o /tmp/escape_counterexample && /tmp/escape_counterexample 31
 ~~~
 
 `layers 3000000 8 20003` の mismatch 4 件は総当たり側の `k` 打ち切りによるもので、
