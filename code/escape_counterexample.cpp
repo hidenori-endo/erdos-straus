@@ -1,8 +1,8 @@
 // escape_counterexample.cpp -- a family excluding a uniform group-only escape bound.
 //
-// In C_(2m), take m-1 copies of a generator g.  Their product is c=g^(m-1),
-// the layer-shaped target (-1)c is g^(-1), and the subset products miss it.
-// Every subgroup avoiding g^(-1) also avoids g, so all m-1 terms escape.
+// In C_(2m), take m-1 copies of a generator g.  After complementing divisors,
+// the layer target is -1=g^m, and the subset products miss it.  Every subgroup
+// avoiding g^m also avoids g, so all m-1 terms escape.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
   for (int m = 2; m <= maximum_m; ++m) {
     int order = 2 * m;
     int terms = m - 1;
-    int target = order - 1;  // g^m * g^(m-1) = g^(-1).
+    int target = m;  // The normalized layer target -1 = g^m.
     vector<char> subset_products(order, false);
     for (int chosen = 0; chosen <= terms; ++chosen)
       subset_products[chosen] = true;

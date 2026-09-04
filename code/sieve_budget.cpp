@@ -37,7 +37,9 @@ int main(int argc, char **argv) {
       ll count = 1LL << omega(d);
       layers += count;
       escape += count * (phi(4 * d) - 1LL);
-      log_character_assignments += count * log((long double)phi(4 * d));
+      // Exactly half the characters modulo 4d are odd; complementing a
+      // divisor normalizes every layer target to -1.
+      log_character_assignments += count * log((long double)phi(4 * d) / 2);
     }
     printf("%3d %9lld %11.1f %10lld %10.1f %11.1Lf %13.2Lf\n", D,
            layers, 1.0 + layers / 2.0, escape, (double)escape / layers,

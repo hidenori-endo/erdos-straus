@@ -61,10 +61,11 @@ This is exactly the number of Type-II layers with `d(e)<=D`: for each prime powe
 the exponent of `e` is either `2b-1` or `2b`.  Different layers have different shifts
 `p+4e` because `d(e)` is uniquely determined by `e`.
 
-Fix `D`.  Split `p` into its finitely many residue classes modulo
-`lcm(840,4,8,...,4D)`, so every target `t` is fixed.  For each layer choose one of the
-finitely many subgroups supplied by Lemma 6.  A prime `q` outside that subgroup excludes
-the residue `p=-4e (mod q)`.  For `q>D^2` these residues are distinct between layers.
+Fix `D` and discard the finitely many `p<=D`.  By complementing divisors, a layer hit is
+equivalent to `p+4e` having a divisor `-1 (mod 4d)`, so the target is fixed without
+splitting `p` modulo an lcm.  For each layer choose one of the finitely many subgroups
+supplied by Lemma 6.  A prime `q` outside that subgroup excludes the residue
+`p=-4e (mod q)`.  For `q>D^2` these residues are distinct between layers.
 Because a proper subgroup has index at least two, each layer excludes at least half of the
 prime residue classes modulo `4d`, on average.  Including the residue `p=0 (mod q)` for
 primality gives sieve dimension at least
@@ -172,6 +173,8 @@ majorant, not a no-go theorem for the layer route.  The finite audit's observed 
 at most 2 shows exactly where a sharper uniform lemma could change the balance.  The
 subsequent [uniform escape audit](2026-09-04-uniform-escape-and-character-majorant.md)
 proves an exact character-kernel compression, but also finds both a group-theoretic
-unbounded-escape family and the actual escape-3 case `p=3361`, `(d,e)=(17,17)`.  Thus the
-needed strengthening must use simultaneous arithmetic relations between layers, not a
-layer-by-layer finite-group bound.
+unbounded-escape family and an apparent escape-3 case at `p=3361`, `(d,e)=(17,17)`.
+Complementing the divisor normalizes the target to `-1` and lowers that case to escape 1;
+all normalized simultaneous survivors tested have escape at most 2.  The group-theoretic
+family remains, so any proof of a uniform arithmetic bound must still use simultaneous
+relations between layers rather than a layer-by-layer finite-group bound.

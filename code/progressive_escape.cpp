@@ -1,9 +1,11 @@
 // progressive_escape.cpp -- track subgroup escape costs on successive survivors.
 //
 // A prime survives budget D when every Type-II layer (d,e), d<=D, misses.
+// Complementing a divisor changes the layer target -n to the fixed target -1.
 // For each checkpoint this program independently enumerates all subgroups of
 // (Z/4dZ)^* and computes the minimum number of prime factors (with
-// multiplicity) outside a subgroup that avoids the target residue.
+// multiplicity) outside a subgroup that avoids -1 (equivalently, the minimum
+// over odd-character kernels).
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
@@ -131,6 +133,7 @@ int main(int argc, char **argv) {
   ll lo = argc > 1 ? atoll(argv[1]) : 1000000;
   ll limit = argc > 2 ? atoll(argv[2]) : 100000000;
   int dmax = argc > 3 ? atoi(argv[3]) : 24;
+  bool primes_only = !(argc > 4 && string(argv[4]) == "all");
   if (dmax > 32) {
     fprintf(stderr, "dmax must be at most 32 (so phi(4d)<=64)\n");
     return 2;
@@ -138,6 +141,9 @@ int main(int argc, char **argv) {
 
   vector<Layer> layers;
   int maximum_e = 0;
+  ll coprime_modulus = 1;
+  for (int d = 1; d <= dmax; ++d)
+    coprime_modulus = lcm(coprime_modulus, (ll)d);
   for (int d = 1; d <= dmax; ++d)
     for (int e = d; e <= d * d; ++e)
       if (d * d % e == 0 && square_kernel_root(e) == d) {
@@ -161,15 +167,20 @@ int main(int argc, char **argv) {
       ll p = 840 * t + residue;
       if (p >= limit) continue;
       in_range = true;
-      if (p < max<ll>(lo, 11) || spf[p] != p) continue;
+      if (p < max<ll>(lo, 11) || (primes_only && spf[p] != p) ||
+          (!primes_only && gcd(p, coprime_modulus) != 1))
+        continue;
       int hit_d = dmax + 1;
       Layer hit{-1, -1};
       for (auto layer : layers) {
         if (layer.d > hit_d) break;
         ll n = p + 4LL * layer.e;
         int modulus = 4 * layer.d;
-        int target = (int)((-n % modulus + modulus) % modulus);
-        if (exact_hit(factor(n), modulus, target)) {
+        int original_target = (int)((-n % modulus + modulus) % modulus);
+        bool original_hit = exact_hit(factor(n), modulus, original_target);
+        bool normalized_hit = exact_hit(factor(n), modulus, modulus - 1);
+        assert(original_hit == normalized_hit);
+        if (normalized_hit) {
           hit_d = layer.d;
           hit = layer;
           break;
@@ -186,12 +197,11 @@ int main(int argc, char **argv) {
   for (int d = 1; d <= dmax; ++d)
     groups[4 * d] = make_unique<UnitGroup>(4 * d);
 
-  vector<int> checkpoints = {1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 18, 20, 23, 24, 25, 32};
-  checkpoints.erase(remove_if(checkpoints.begin(), checkpoints.end(),
-                              [dmax](int d) { return d > dmax; }),
-                    checkpoints.end());
-  printf("range=[%lld,%lld) hard=%zu dmax=%d layers=%zu\n", lo, limit,
-         hard_primes.size(), dmax, layers.size());
+  vector<int> checkpoints(dmax);
+  iota(checkpoints.begin(), checkpoints.end(), 1);
+  printf("range=[%lld,%lld) %s=%zu dmax=%d layers=%zu\n", lo, limit,
+         primes_only ? "hard-primes" : "coprime-hard-class-integers", hard_primes.size(),
+         dmax, layers.size());
   printf("\n# survivors and exact minimum escape costs\n");
   printf(" D survivors char_misses mult_misses max_escape  max-per-prime distribution\n");
   for (int checkpoint : checkpoints) {
@@ -207,7 +217,7 @@ int main(int argc, char **argv) {
         if (layer.d > checkpoint) break;
         int modulus = 4 * layer.d;
         ll n = p + 4LL * layer.e;
-        int target = (int)((-n % modulus + modulus) % modulus);
+        int target = modulus - 1;
         vector<Factor> factors = factor(n);
         int escape = groups[modulus]->minimum_escape(factors, target);
         if (escape == 0)
@@ -228,8 +238,9 @@ int main(int argc, char **argv) {
     printf("\n");
   }
 
-  printf("\n# primes surviving D=16, first later hit, and multiplicity misses through D=24\n");
+  printf("\n# candidates surviving D=16, first later hit, and multiplicity misses through D=24\n");
   printf("p first_d first_e  multiplicity_misses=(d,e,escape)\n");
+  int printed = 0;
   for (size_t i = 0; i < hard_primes.size(); ++i) {
     if (first_hit_d[i] <= 16) continue;
     ll p = hard_primes[i];
@@ -238,10 +249,14 @@ int main(int argc, char **argv) {
       if (layer.d > min(dmax, 24) || layer.d >= first_hit_d[i]) break;
       int modulus = 4 * layer.d;
       ll n = p + 4LL * layer.e;
-      int target = (int)((-n % modulus + modulus) % modulus);
+      int target = modulus - 1;
       int escape = groups[modulus]->minimum_escape(factor(n), target);
       if (escape > 0) printf("(%d,%d,%d)", layer.d, layer.e, escape);
     }
     printf("\n");
+    if (++printed == 30) {
+      printf("... additional survivors omitted ...\n");
+      break;
+    }
   }
 }

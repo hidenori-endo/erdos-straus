@@ -4,12 +4,13 @@ This update tests the next proposed step after the fixed-budget finite-group sie
 the subgroup escape bound uniform while allowing the layer budget `D` to grow.  The
 outcome has three parts.
 
-1. The union over arbitrary subgroups can be compressed **exactly** to a union over
-   characters.  This improves one source of constants.
+1. Complementing a divisor normalizes the target from `-(p+4e)` to `-1`.  The union over
+   arbitrary subgroups can then be compressed **exactly** to a union over odd characters.
 2. A uniform constant escape bound is false at the finite-group level, even when the
-   target has the special layer form `t=(-1) product(g_i)`.
-3. The observed escape remains very small on actual simultaneous survivors, but it is
-   not always at most two: `p=3361`, layer `(17,17)`, has minimum escape three.
+   target is the normalized layer target `-1`.
+3. The normalized escape is at most two on every actual simultaneous survivor tested.
+   The previously recorded escape three for `p=3361` used the unnormalized target
+   `-(p+4e)`; after taking the complementary divisor its minimum is one.
 
 Reproduction code: `code/progressive_escape.cpp`, `code/escape_counterexample.cpp`, and
 the extended `code/sieve_budget.cpp`.
@@ -40,19 +41,30 @@ Then `H subset ker(chi)` and `chi(t)!=1`, so every term outside `ker(chi)` is al
 `H`.  The character cost is therefore at most `b_H(g,t)`.  Taking minima gives the reverse
 inequality.  QED.
 
-For a missed layer `(d,e)`, with `n=p+4e`, this gives the exact cover
+For a layer `(d,e)`, with `n=p+4e`, `m=4d`, and `p` not dividing `d`, complementing a
+divisor gives
 
 ~~~
-there is a character chi modulo 4d with
-chi(-p) != 1 and Omega_{chi(q) != 1}(n) <= phi(4d)-1.
+some k|n has k == -n (mod m)
+  iff some l|n has l == -1 (mod m).
 ~~~
 
-Thus arbitrary subgroup assignments are unnecessary.  Through budget `D`, the number of
-character assignments is at most
+Indeed `l=n/k`, and `n/k == -1` is equivalent to `k == -n` because `d|e` and hence
+`gcd(n,m)=gcd(p,4d)=1`.
+Consequently a missed layer gives the exact cover
 
 ~~~
-C_D = product_{d<=D} phi(4d)^(2^omega(d)),
-log C_D <= L(D) log(4D).
+there is an odd character chi modulo 4d with
+Omega_{chi(q) != 1}(n) <= phi(4d)-1.
+~~~
+
+There are exactly `phi(4d)/2` odd characters.  Thus arbitrary subgroup assignments and
+the old residue-class split used to fix the target are unnecessary.  Through budget `D`,
+the number of character assignments is at most
+
+~~~
+C_D = product_{d<=D} (phi(4d)/2)^(2^omega(d)),
+log C_D <= L(D) log(2D).
 ~~~
 
 This is a rigorous explicit `exp(O(L(D) log D))` combinatorial bound.  Its exponential
@@ -62,15 +74,15 @@ uniform prime distribution in the changing character moduli still have to be con
 
 ## 2. A group-only constant escape bound is impossible
 
-Let `G=C_(2m)=<g>`, let `j=g^m` be its element `-1`, and take `m-1` copies of `g`.  Their
-total product is `c=g^(m-1)`, while the layer-shaped target is
+Let `G=C_(2m)=<g>`, let `j=g^m` be its element `-1`, and take `m-1` copies of `g`.  The
+normalized layer target is
 
 ~~~
-t = j c = g^(2m-1) = g^(-1).
+t = j = g^m.
 ~~~
 
 The available subset products are exactly `1,g,...,g^(m-1)`, so they miss `t`.  If a
-subgroup `H` contained `g`, it would also contain `g^(-1)=t`.  Consequently every subgroup
+subgroup `H` contained `g`, it would also contain `g^m=t`.  Consequently every subgroup
 avoiding `t` excludes all `m-1` sequence terms, and the minimum escape is `m-1`.  It is
 unbounded.
 
@@ -107,8 +119,8 @@ For all hard primes `11<=p<10^8`:
 | 10 | 50 | 1,036 | 114 | 2 |
 | 12 | 16 | 427 | 37 | 2 |
 | 16 | 3 | 109 | 14 | 2 |
-| 18 | 2 | 84 | 10 | **3** |
-| 24 | 1 | 59 | 8 | **3** |
+| 18 | 2 | 84 | 10 | 2 |
+| 24 | 1 | 59 | 8 | 2 |
 | 25 | 0 | 0 | 0 | 0 |
 | 32 | 0 | 0 | 0 | 0 |
 
@@ -117,12 +129,14 @@ not counts of primes.  In the subrange `10^6<=p<10^8`, the survivor counts are 2
 `D=8`, 2 at `D=16`, 1 at `D=18`, and 0 at `D=24`; every observed multiplicity escape is
 at most two there.
 
-The exception to the tentative bound two is explicit:
+The apparent exception to the tentative bound two under the old target was
 
 ~~~
-p=3361, (d,e)=(17,17), p+4e=3429=3^3*127, minimum escape=3.
+p=3361, (d,e)=(17,17), p+4e=3429=3^3*127.
 ~~~
 
+Its minimum escape is three when separating `-(p+4e)`, but only **one** when separating
+the equivalent target `-1`.  Thus it is not a counterexample to normalized escape two.
 This prime survives all Type-II layers through `D=24`, then hits `(d,e)=(25,125)` because
 `p+4e=3861` has divisor `39 == -3861 (mod 100)`.  The other two primes surviving `D=16`
 below `10^8` are caught by `(18,108)` and `(24,96)`:
@@ -142,12 +156,12 @@ subgroup union:
 
 | `D` | `L(D)` | `B_D` | `log C_D` | `C_D^(1/L(D))` |
 |---:|---:|---:|---:|---:|
-| 8 | 17 | 121 | 33.4 | 7.13 |
-| 16 | 41 | 561 | 103.6 | 12.52 |
-| 24 | 67 | 1,367 | 193.2 | 17.88 |
-| 32 | 93 | 2,493 | 291.0 | 22.85 |
-| 64 | 211 | 11,143 | 794.1 | 43.10 |
-| 128 | 477 | 49,717 | 2,107.8 | 83.01 |
+| 8 | 17 | 121 | 21.6 | 3.56 |
+| 16 | 41 | 561 | 75.2 | 6.26 |
+| 24 | 67 | 1,367 | 146.8 | 8.94 |
+| 32 | 93 | 2,493 | 226.5 | 11.42 |
+| 64 | 211 | 11,143 | 647.8 | 21.55 |
+| 128 | 477 | 49,717 | 1,777.2 | 41.50 |
 
 For a character whose kernel has index `r`, the excluded primes have density
 `delta=1-1/r>=1/2`.  The permitted-factor part of the sieve has the Poisson-tail shape
@@ -174,13 +188,13 @@ The data point to a narrower statement than uniform escape for every layer.  For
 layer define
 
 ~~~
-b_(d,e)(p) = min_{chi(-p) != 1} Omega_{chi(q) != 1}(p+4e).
+b_(d,e)(p) = min_{chi odd modulo 4d} Omega_{chi(q) != 1}(p+4e).
 ~~~
 
 A useful completion lemma would only need to show that, for a prime missing all layers
 through `D`, a positive proportion of those layers have `b_(d,e)(p)<=B` for one absolute
 `B`, or an averaged analogue strong enough to keep the product of the Poisson tails small.
-The finite audit supports this on its tested range (`B=3`), while Lemma 8 makes the
+The finite audit supports this on its tested range (`B=2`), while Lemma 8 makes the
 corresponding character sieve explicit.  The cyclic counterexample shows that such a
 lemma must use the shared prime `p`, the relations between the shifts `p+4e`, or primality;
 it cannot follow from the subset-product state of each layer separately.
@@ -194,3 +208,8 @@ Accordingly, the most direct remaining route is now:
 
 This replaces the earlier vague goal “make the finite subgroup union uniform” with a
 specific arithmetic cross-layer lemma.
+
+The subsequent [complement-normalization audit](2026-09-04-complement-normalization-and-cross-layer-audit.md)
+proves that complementary divisors replace the moving target by `-1`, so only odd
+characters are needed.  It verifies normalized escape at most two on every common
+survivor through `p<10^8`, but does not prove the resulting cross-layer conjecture.

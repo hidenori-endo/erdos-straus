@@ -138,6 +138,19 @@
         "progressive survivor escape audit",
         "cross-layer low-escape target"
       ]
+    },
+    {
+      "source_url": null,
+      "captured_at": "2026-09-04",
+      "status": "in-repo verification",
+      "digest": "updates/2026-09-04-complement-normalization-and-cross-layer-audit.md",
+      "topics": [
+        "complement divisor target normalization",
+        "odd-character escape",
+        "deletion distance",
+        "finite cross-layer proposition",
+        "large-factor disjointness"
+      ]
     }
   ],
   "decoration_removed": [

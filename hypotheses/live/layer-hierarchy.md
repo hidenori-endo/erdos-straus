@@ -69,16 +69,18 @@ L(D)=sum_{d<=D} 2^omega(d).
 
 ## 一様化 route の精密化
 
-[uniform escape audit](../../updates/2026-09-04-uniform-escape-and-character-majorant.md) により、
-stabilizer が与える部分群の union は character kernel の union に厳密に圧縮できる。割当数は
+[complement normalization / cross-layer audit](../../updates/2026-09-04-complement-normalization-and-cross-layer-audit.md)
+により、層の target は補約数を取って常に `-1` に正規化でき、stabilizer が与える部分群の
+union は odd character kernel の union に厳密に圧縮できる。割当数は
 
 ~~~
-C_D = product_{d<=D} phi(4d)^(2^omega(d)),
-log C_D <= L(D) log(4D).
+C_D = product_{d<=D} (phi(4d)/2)^(2^omega(d)),
+log C_D <= L(D) log(2D).
 ~~~
 
 一方、各層の escape cost を絶対定数で抑える有限群補題は偽である。`C_(2m)` に generator
-を `m-1` 個置き、target を `(-1) product(g_i)=g^(-1)` とすると最小 escape は `m-1`。
-実データでも `p=3361`, `(d,e)=(17,17)` が escape 3 なので、観測上の上限 2 は棄却された。
+を `m-1` 個置き、補約数で正規化した target `-1=g^m` を取ると最小 escape は `m-1`。
+一方、実データでは `p=3361`, `(d,e)=(17,17)` の旧 target に対する escape 3 は、正規化後
+には 1 へ下がる。`p<10^8`, `D<=24` の同時残余では正規化 escape は全て 2 以下だった。
 残る具体的標的は、全層を同時に miss する prime について、正の割合の層で escape が定数以下
 となること（またはその平均版）を shift 間の差を使って示す cross-layer 補題である。
