@@ -151,6 +151,18 @@
         "finite cross-layer proposition",
         "large-factor disjointness"
       ]
+    },
+    {
+      "source_url": null,
+      "captured_at": "2026-09-04",
+      "status": "in-repo verification",
+      "digest": "updates/2026-09-04-inverse-escape-and-retro-capture.md",
+      "topics": [
+        "character-or-sparse-support inverse lemma",
+        "sharp two-class escape obstruction",
+        "retro-capture conjecture",
+        "single-layer high-escape audit"
+      ]
     }
   ],
   "decoration_removed": [

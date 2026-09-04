@@ -34,6 +34,7 @@
 - [2026-09-04 高指数層と有限群 sieve 補題](updates/2026-09-04-higher-layer-finite-group-sieve.md)
 - [2026-09-04 uniform escape の反例と character majorant](updates/2026-09-04-uniform-escape-and-character-majorant.md)
 - [2026-09-04 補約数による target 正規化とcross-layer監査](updates/2026-09-04-complement-normalization-and-cross-layer-audit.md)
+- [2026-09-04 inverse escape 補題とretro-capture予想](updates/2026-09-04-inverse-escape-and-retro-capture.md)
 
 ## 再現コード
 

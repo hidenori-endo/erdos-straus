@@ -134,6 +134,9 @@ int main(int argc, char **argv) {
   ll limit = argc > 2 ? atoll(argv[2]) : 100000000;
   int dmax = argc > 3 ? atoi(argv[3]) : 24;
   bool primes_only = !(argc > 4 && string(argv[4]) == "all");
+  bool audit_one_layer = argc > 6 && string(argv[4]) == "layer";
+  Layer audited_layer{audit_one_layer ? atoi(argv[5]) : -1,
+                      audit_one_layer ? atoi(argv[6]) : -1};
   if (dmax > 32) {
     fprintf(stderr, "dmax must be at most 32 (so phi(4d)<=64)\n");
     return 2;
@@ -196,6 +199,52 @@ int main(int argc, char **argv) {
   map<int, unique_ptr<UnitGroup>> groups;
   for (int d = 1; d <= dmax; ++d)
     groups[4 * d] = make_unique<UnitGroup>(4 * d);
+
+  if (audit_one_layer) {
+    if (audited_layer.d > dmax || square_kernel_root(audited_layer.e) != audited_layer.d) {
+      fprintf(stderr, "audited (d,e) is not a layer within dmax\n");
+      return 2;
+    }
+    ll hits = 0, character_misses = 0, multiplicity_misses = 0;
+    map<int, ll> escape_distribution;
+    map<int, ll> high_escape_first_hit_d;
+    vector<tuple<ll, int, Layer>> large_examples;
+    int modulus = 4 * audited_layer.d;
+    for (size_t candidate = 0; candidate < hard_primes.size(); ++candidate) {
+      ll p = hard_primes[candidate];
+      ll n = p + 4LL * audited_layer.e;
+      vector<Factor> factors = factor(n);
+      if (exact_hit(factors, modulus, modulus - 1)) {
+        ++hits;
+        continue;
+      }
+      int escape = groups[modulus]->minimum_escape(factors, modulus - 1);
+      ++escape_distribution[escape];
+      if (escape == 0)
+        ++character_misses;
+      else
+        ++multiplicity_misses;
+      if (escape >= 3) {
+        ++high_escape_first_hit_d[first_hit_d[candidate]];
+        if (large_examples.size() < 20)
+          large_examples.push_back({p, escape, first_hit_layer[candidate]});
+      }
+    }
+    printf("\n# single-layer audit (not conditioned on earlier misses)\n");
+    printf("layer=(%d,%d) hits=%lld character_misses=%lld multiplicity_misses=%lld\n",
+           audited_layer.d, audited_layer.e, hits, character_misses,
+           multiplicity_misses);
+    printf("escape distribution:");
+    for (auto [escape, count] : escape_distribution)
+      printf(" %d:%lld", escape, count);
+    printf("\nhigh-escape first-hit d distribution:");
+    for (auto [first_d, count] : high_escape_first_hit_d)
+      printf(" %d:%lld", first_d, count);
+    printf("\nfirst escape>=3 examples (p:escape:first-hit):");
+    for (auto [p, escape, first_hit] : large_examples)
+      printf(" %lld:%d:(%d,%d)", p, escape, first_hit.d, first_hit.e);
+    printf("\n");
+  }
 
   vector<int> checkpoints(dmax);
   iota(checkpoints.begin(), checkpoints.end(), 1);

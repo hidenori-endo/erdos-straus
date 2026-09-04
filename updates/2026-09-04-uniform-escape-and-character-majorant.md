@@ -213,3 +213,5 @@ The subsequent [complement-normalization audit](2026-09-04-complement-normalizat
 proves that complementary divisors replace the moving target by `-1`, so only odd
 characters are needed.  It verifies normalized escape at most two on every common
 survivor through `p<10^8`, but does not prove the resulting cross-layer conjecture.
+The further [inverse escape audit](2026-09-04-inverse-escape-and-retro-capture.md) proves a
+character-or-sparse-support dichotomy and formulates the exact retro-capture conjecture.

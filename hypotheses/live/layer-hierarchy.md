@@ -84,3 +84,10 @@ log C_D <= L(D) log(2D).
 には 1 へ下がる。`p<10^8`, `D<=24` の同時残余では正規化 escape は全て 2 以下だった。
 残る具体的標的は、全層を同時に miss する prime について、正の割合の層で escape が定数以下
 となること（またはその平均版）を shift 間の差を使って示す cross-layer 補題である。
+
+[inverse escape audit](../../updates/2026-09-04-inverse-escape-and-retro-capture.md) では、
+miss 列の非自明 support `A` について、`-1∉⟨A⟩`、`|A|≤4`、または
+`2|A|<|⟨A⟩|` のいずれかとなる一般補題を証明した。一方、二つの residue `g,g^-1` だけでも
+escape `|G|-2` が可能なので、support 数だけから定数 escape は出ない。現在の最も明確な予想は、
+`b_(d,e)(p)≥3` の layer miss は必ず `d'<d` の層ですでに hit しているという
+**retro-capture conjecture**。`p<10^8`, `d≤32` では全件成立するが、一般証明は未成立。

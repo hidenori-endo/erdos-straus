@@ -204,9 +204,10 @@ g++ -O2 -std=c++20 code/tradeoff.cpp        -o /tmp/tradeoff        && /tmp/trad
 - `progressive_escape.cpp`: 補約数により target を `-1` に正規化し、予算 `D` の同時残余に
   対して `(Z/4dZ)^*` の全部分群を独立に列挙し、各 miss の厳密な最小 odd-character
   escape cost を測る。旧 target との hit 同値も全件 assert する。`D<=32`。第4引数
-  `all` では全 `d<=D` と互いに素な hard-class 合成数も含めた対照実験を行う。
+  `all` では全 `d<=D` と互いに素な hard-class 合成数も含めた対照実験を行う。第4引数
+  `layer` と `(d,e)` では単独層のescape分布と高escape例の最初の先行hitを出す。
 - `escape_counterexample.cpp`: `C_(2m)` 上の layer-shaped target に対する最小 escape
-  `m-1` の反例族を全部分群の列挙で確認する。
+  `m-1`（一合同類）と `2m-2`（二合同類）の反例族を全部分群の列挙で確認する。
 
 ~~~sh
 g++ -O2 -std=c++20 code/layers.cpp      -o /tmp/layers      && /tmp/layers      3000000 8 20003
@@ -217,6 +218,7 @@ g++ -O2 -std=c++20 code/higher_layers.cpp -o /tmp/higher_layers && /tmp/higher_l
 g++ -O2 -std=c++20 code/sieve_budget.cpp -o /tmp/sieve_budget && /tmp/sieve_budget
 g++ -O2 -std=c++20 code/progressive_escape.cpp -o /tmp/progressive_escape && /tmp/progressive_escape 11 100000000 32
 /tmp/progressive_escape 11 10000000 32 all
+/tmp/progressive_escape 11 100000000 17 layer 17 17
 g++ -O2 -std=c++20 code/escape_counterexample.cpp -o /tmp/escape_counterexample && /tmp/escape_counterexample 31
 ~~~
 

@@ -197,3 +197,8 @@ The closest standard results found do not directly supply the missing inverse th
 
 Thus these papers support useful structural analogies, but applying any of them here
 would require a new reduction.  No such reduction was verified in this audit.
+
+The continuation [inverse escape and retro-capture](2026-09-04-inverse-escape-and-retro-capture.md)
+does obtain a general character-or-sparse-support dichotomy and verifies that all
+high-escape individual-layer examples in the tested range are caught by earlier layers.
+It does not prove that retro-capture phenomenon in general.
