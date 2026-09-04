@@ -17,6 +17,7 @@
 - [Small-fab sieve dimension](live/fab-sieve-dimension.md): 小さい fab pair の forbidden residue を sieve へ束ねる計画。
 - [Adaptive external-NR factor forcing](live/adaptive-external-nr-factor-forcing.md): induced shift の known-factor box が hit するという未証 conjecture。
 - [最小 hit shift bound](live/min-hit-shift-bound.md): exact box の最小 hit shift は `p<10^9` の全 hard prime で `k ≤ 107`。
+- [証拠複雑度 cert(p)](live/certificate-complexity.md): `cert = min_k max(k, d(e))` は `p<10^9` で 395 以下、幾何平均 17.2。`D=1` 層は恒等式として証明済み。
 
 ## Rejected / discontinued
 

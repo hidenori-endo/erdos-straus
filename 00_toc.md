@@ -28,6 +28,7 @@
 - [2026-09-03 h=1, k=23 thin state](updates/2026-09-03-h1-k23-thin-state.md)
 - [2026-09-04 adaptive external-NR factor forcing](updates/2026-09-04-adaptive-nr-factor-forcing.md)
 - [2026-09-04 quotient transport route の棄却と最小 hit shift](updates/2026-09-04-transport-verdict-and-min-hit-shift.md)
+- [2026-09-04 証拠複雑度と恒等式階層](updates/2026-09-04-certificate-complexity.md)
 
 ## 再現コード
 

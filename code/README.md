@@ -165,6 +165,25 @@ g++ -O2 -std=c++20 code/min_hit_k.cpp      -o /tmp/min_hit_k      && /tmp/min_hi
 `max minK = 107` (`p = 8,803,369`) を出す。`survivor_nr 100000000` の class 別
 survivor 数は 09-03 の cross-shift 集計 (4810/316/447/130/1223/526) と一致する。
 
+## 2026-09-04 証拠複雑度コード
+
+[certificate complexity](../updates/2026-09-04-certificate-complexity.md) の 3 本。
+`d(e) = ∏ q^⌈a_q/2⌉` は `e | C_k²` が target を踏むときに必要な `C_k` の最小約数で、
+`(k, d, e)` を固定すると条件が `p` の合同式（＝古典的恒等式）になる。
+
+- `cert_size.cpp`: `k ≤ KMAX` 固定での最小証拠約数 `dmin(p)` の分布。
+- `cert_complexity.cpp`: `cert(p) = min_k max(k, d(e))`。`k` 昇順で `k ≥ best` 打ち切り。
+- `tradeoff.cpp`: 約数予算 `D` に対する必要 shift `k_D(p)` のトレードオフ表。
+
+~~~sh
+g++ -O2 -std=c++20 code/cert_size.cpp       -o /tmp/cert_size       && /tmp/cert_size       100000000 107
+g++ -O2 -std=c++20 code/cert_complexity.cpp -o /tmp/cert_complexity && /tmp/cert_complexity 1000000000
+g++ -O2 -std=c++20 code/tradeoff.cpp        -o /tmp/tradeoff        && /tmp/tradeoff        100000000 4003
+~~~
+
+`cert_complexity 1000000000` は約 75 秒で hard 1,587,581 / 最大 cert 395 / 幾何平均 17.2。
+`tradeoff` の `D=1` 行は「`p+4` が `3 (mod 4)` の素因子を持つか」と一致する（補題 2）。
+
 ## 教訓（2026-09-01 の訂正が逆だった）
 
 09-01 の訂正は「`r²` は指数 1 の素因子に対して実在しない約数」として `r²` 遷移を
