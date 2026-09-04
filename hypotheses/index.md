@@ -16,6 +16,7 @@
 - [External shift log-squared conjecture](live/external-shift-log-squared-conjecture.md): detector 後の full-box hit に `q≲(log p)^2` を予想。
 - [Small-fab sieve dimension](live/fab-sieve-dimension.md): 小さい fab pair の forbidden residue を sieve へ束ねる計画。
 - [Adaptive external-NR factor forcing](live/adaptive-external-nr-factor-forcing.md): induced shift の known-factor box が hit するという未証 conjecture。
+- [最小 hit shift bound](live/min-hit-shift-bound.md): exact box の最小 hit shift は `p<10^9` の全 hard prime で `k ≤ 107`。
 
 ## Rejected / discontinued
 
@@ -29,5 +30,6 @@
 - [Bounded aligned-shield rank](rejected/bounded-aligned-shield-rank.md)
 - [Large defect contradiction](rejected/large-defect-contradiction.md)
 - [Target-position correlation](rejected/target-position-correlation.md)
+- [Quotient transport / persistence-impossible route](rejected/quotient-transport-persistence.md)
 
 各ファイルには、状態、主張、根拠、関連ターンを記載する。棄却は「元の着想が何も役立たない」という意味ではなく、単独の証明routeとして成立しないという意味である。

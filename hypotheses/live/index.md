@@ -17,3 +17,4 @@
 - [External shift log-squared conjecture](external-shift-log-squared-conjecture.md)
 - [Small-fab sieve dimension](fab-sieve-dimension.md)
 - [Adaptive external-NR factor forcing](adaptive-external-nr-factor-forcing.md)
+- [最小 hit shift bound](min-hit-shift-bound.md)

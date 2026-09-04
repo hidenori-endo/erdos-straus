@@ -140,6 +140,31 @@ g++ -O2 -std=c++20 code/nr_adaptive.cpp -o /tmp/nr_adaptive
 論理は `updates/2026-09-03-intermediate-fiber-global.md` と
 `updates/2026-09-03-seed-kernel-global-proof.md` に整理した。
 
+## 2026-09-04 輸送 route 検証コード
+
+[transport verdict](../updates/2026-09-04-transport-verdict-and-min-hit-shift.md) の
+数値を再現する 4 本。いずれも exact box `Div(C_k²)` を使い、`(p+3)/4` までの
+smallest-prime-factor 篩で `C_k` を分解する。
+
+- `survivor_nr.cpp`: atlas の pure 条件（補題 1）で survivor を絞り、external-NR
+  induced shift を全 rank 走らせて first-hit rank と miss 構造を出す。
+- `transport_test.cpp`: rank ごとの hit 率を等分布モデル `2 d(C_k²)/k` と比較し、
+  生の miss 相関行列を出す。
+- `residual_corr.cpp`: `(k, d(C_k²))` の 2 次元ビンで miss 確率を較正し、残差相関と
+  独立モデルの予測精度を出す。**輸送 route の棄却根拠**。
+- `min_hit_k.cpp`: survivor の最小 hit shift `minK(p)` を全数で求める。
+
+~~~sh
+g++ -O2 -std=c++20 code/survivor_nr.cpp   -o /tmp/survivor_nr   && /tmp/survivor_nr   100000000 5000 60
+g++ -O2 -std=c++20 code/transport_test.cpp -o /tmp/transport_test && /tmp/transport_test 25000000 20000 64
+g++ -O2 -std=c++20 code/residual_corr.cpp  -o /tmp/residual_corr  && /tmp/residual_corr  100000000 20000 32
+g++ -O2 -std=c++20 code/min_hit_k.cpp      -o /tmp/min_hit_k      && /tmp/min_hit_k      1000000000 4003
+~~~
+
+`min_hit_k 1000000000` は SPF 篩に約 1GB、実行 1 分。survivor 51,625 / 未解決 0 /
+`max minK = 107` (`p = 8,803,369`) を出す。`survivor_nr 100000000` の class 別
+survivor 数は 09-03 の cross-shift 集計 (4810/316/447/130/1223/526) と一致する。
+
 ## 教訓（2026-09-01 の訂正が逆だった）
 
 09-01 の訂正は「`r²` は指数 1 の素因子に対して実在しない約数」として `r²` 遷移を

@@ -12,6 +12,7 @@
 - [Bounded aligned-shield rank](bounded-aligned-shield-rank.md)
 - [Large defect contradiction](large-defect-contradiction.md)
 - [Target-position correlation](target-position-correlation.md)
+- [Quotient transport / persistence-impossible route](quotient-transport-persistence.md)
 
 These are retained as negative results and failure modes, not as proof components.
 
