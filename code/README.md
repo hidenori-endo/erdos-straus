@@ -196,12 +196,19 @@ g++ -O2 -std=c++20 code/tradeoff.cpp        -o /tmp/tradeoff        && /tmp/trad
   共通失敗率、prime-atom sieve の上界集合、局所 sieve 次元 `2`（素数条件込みで `3`）
   を再現する。さらに odd character による exact miss の分離を全列挙し、4096 character
   assignment、exact 層の次元 `9/2`（素数条件込みで `11/2`）を確認する。
+- `higher_layers.cpp`: 上の9層を逃れた prime に対して `d=4,5,7,8` の8層を検査し、
+  exact miss を character obstruction（target が生成部分群の外）と multiplicity
+  obstruction（部分群内だが実際の指数では到達不能）に分解する。
+- `sieve_budget.cpp`: 全固定層 theorem の `L(D)`、sieve 次元 `1+L(D)/2`、stabilizer
+  escape allowance `B_D` の成長を表示する。
 
 ~~~sh
 g++ -O2 -std=c++20 code/layers.cpp      -o /tmp/layers      && /tmp/layers      3000000 8 20003
 g++ -O2 -std=c++20 code/fast_layers.cpp -o /tmp/fast_layers && /tmp/fast_layers 10000000 100000000 32
 g++ -O2 -std=c++20 code/failchar.cpp    -o /tmp/failchar    && /tmp/failchar    10000000
 g++ -O2 -std=c++20 code/exponent2_layers.cpp -o /tmp/exponent2_layers && /tmp/exponent2_layers 10000000 100000000
+g++ -O2 -std=c++20 code/higher_layers.cpp -o /tmp/higher_layers && /tmp/higher_layers 1000000 100000000
+g++ -O2 -std=c++20 code/sieve_budget.cpp -o /tmp/sieve_budget && /tmp/sieve_budget
 ~~~
 
 `layers 3000000 8 20003` の mismatch 4 件は総当たり側の `k` 打ち切りによるもので、

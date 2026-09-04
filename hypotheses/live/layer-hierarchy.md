@@ -1,6 +1,6 @@
 # 恒等式層の階層 (定理 3)
 
-- status: live / 定理と指数2層の無条件密度上界は証明済み、全層への一様化は未証
+- status: live / 各固定 `D` の無条件密度上界は証明済み、`D=D(x)` への一様化は未証
 - source: 2026-09-04 の[層の同定](../../updates/2026-09-04-layer-identification.md)
 
 ## 定理 3（証明済み）
@@ -53,3 +53,16 @@ exact 共通失敗 prime は `O(x/(log x)^(11/2))`、相対 `O((log x)^(-9/2))` 
 固定 `D` で未被覆 prime が無限に残るかは未証。`cert(p)` の非有界性は `k,d` の同時有界を
 否定するだけで、固定 `D`・非有界 `k` の可能性までは否定しない。upper-bound sieve 単独では
 parity barrier のため空集合を導けない。
+
+## 高指数層を含む固定予算（証明済み）
+
+[finite-group sieve lemma](../../updates/2026-09-04-higher-layer-finite-group-sieve.md) により、
+任意の固定 `D` で、全 Type-II 層を miss する hard prime の個数は
+
+~~~
+O_D(x (log log x)^B_D / (log x)^(1+L(D)/2)),
+L(D)=sum_{d<=D} 2^omega(d).
+~~~
+
+従って仮想反例の個数は任意の固定 `A` に対し `O_A(x/(log x)^A)`。証明完了に残るのは、
+この評価を `D=D(x)` にできる一様な定数管理である。

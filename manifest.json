@@ -114,6 +114,18 @@
         "dimension-3 atom and dimension-11/2 exact Selberg bounds",
         "least-NR mass-route audit"
       ]
+    },
+    {
+      "source_url": null,
+      "captured_at": "2026-09-04",
+      "status": "in-repo verification",
+      "digest": "updates/2026-09-04-higher-layer-finite-group-sieve.md",
+      "topics": [
+        "higher-exponent layer audit",
+        "stabilizer escape lemma",
+        "all fixed Type-II layer sieve bound",
+        "uniform-in-D bottleneck"
+      ]
     }
   ],
   "decoration_removed": [

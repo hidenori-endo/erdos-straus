@@ -61,4 +61,6 @@ Landau–Ramanujan 型集合。したがってこの 1 層だけで hard prime �
 [恒等式層の階層](layer-hierarchy.md)で全 Type II 層が単一の閉じた形に同定された。
 特に指数 2 の 9 層は、単一素因子 certificate だけでも共通失敗 prime が
 `O(x/(log x)^3)`、exact character sieve では `O(x/(log x)^(11/2))` となる。残る本質は
-層予算 `D` に一様な評価と、指数 `>2` の法での multiplicity の扱いである。
+さらに [finite-group sieve lemma](../../updates/2026-09-04-higher-layer-finite-group-sieve.md)
+により、指数 `>2` を含む各固定 `D` でも次元 `1+L(D)/2` の上界が得られた。残る本質は
+層予算を `D=D(x)` としたときの一様な定数管理である。

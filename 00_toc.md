@@ -31,6 +31,7 @@
 - [2026-09-04 証拠複雑度と恒等式階層](updates/2026-09-04-certificate-complexity.md)
 - [2026-09-04 層 D=2,4,8 の同定](updates/2026-09-04-layer-identification.md)
 - [2026-09-04 proof route の監査と指数2層 sieve](updates/2026-09-04-route-audit-and-exponent2-sieve.md)
+- [2026-09-04 高指数層と有限群 sieve 補題](updates/2026-09-04-higher-layer-finite-group-sieve.md)
 
 ## 再現コード
 

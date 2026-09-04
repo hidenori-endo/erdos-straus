@@ -159,19 +159,19 @@ empirical adaptive external-NR conjecture itself.
 
 ## 6. Route to test next
 
-The next proof-relevant checkpoint is now precise:
+The next proof-relevant checkpoint was the extension to exponent `>2`; the
+[finite-group sieve lemma](2026-09-04-higher-layer-finite-group-sieve.md) now proves
+unbounded sieve dimension for every fixed budget.  The remaining route is:
 
-1. extend character separation to the exponent `>2` layers, where bounded
-   multiplicities mean that the divisor residues are no longer a subgroup;
-2. prove that the resulting effective sieve dimension `kappa(D)` tends to infinity and
-   control the union/majorant constants quantitatively;
-3. obtain estimates uniform in a slowly growing budget `D=D(x)`, so that the sieve
+1. replace the finite union over subgroup assignments by a quantitatively uniform
+   majorant;
+2. obtain estimates uniform in a slowly growing budget `D=D(x)`, so that the sieve
    dimension grows rather than remaining fixed;
-4. combine that uniform estimate with an explicit finite verification.  If the uniform
+3. combine that uniform estimate with an explicit finite verification.  If the uniform
    constants are not strong enough to make the exceptional count less than one, a
    parity-breaking or other non-sieve argument will still be needed for the residual set.
 
 This route uses the exact closed form of Theorem 3 and explains both the observed shallow
 certificates and the increasing sieve dimension.  Unlike quotient transport, it now has
-the concrete exact-layer Theorem 5 and a falsifiable next target: unbounded dimension with
-uniform constants.
+the concrete exact-layer Theorem 5, the all-fixed-layer Theorem 7, and a falsifiable next
+target: growing `D` with uniform constants.
